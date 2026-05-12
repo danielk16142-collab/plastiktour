@@ -1,0 +1,195 @@
+{
+  "app": {
+    "name": "PlastiKTour",
+    "tagline": "Gestión integral para cirugía plástica"
+  },
+  "nav": {
+    "dashboard": "Panel Principal",
+    "appointments": "Citas",
+    "patients": "Pacientes",
+    "leads": "Prospectos",
+    "postop": "Seguimiento Post-Op",
+    "waitlist": "Lista de Espera",
+    "settings": "Configuración"
+  },
+  "dashboard": {
+    "welcome": "Bienvenido, Doctor",
+    "todayAppointments": "Citas de Hoy",
+    "pendingFollowups": "Seguimientos Pendientes",
+    "activeLeads": "Prospectos Activos",
+    "cancelledThisMonth": "Cancelaciones Este Mes",
+    "revenueAtRisk": "Ingresos en Riesgo",
+    "waitlistCount": "En Lista de Espera"
+  },
+  "patients": {
+    "title": "CRM de Pacientes",
+    "addPatient": "Agregar Paciente",
+    "searchPlaceholder": "Buscar por nombre, email o teléfono...",
+    "status": {
+      "lead": "Prospecto",
+      "consultation_scheduled": "Consulta Agendada",
+      "consultation_done": "Consulta Realizada",
+      "preop": "Pre-Operatorio",
+      "surgery_scheduled": "Cirugía Agendada",
+      "postop": "Post-Operatorio",
+      "follow_up_complete": "Seguimiento Completo"
+    },
+    "fields": {
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "email": "Correo Electrónico",
+      "phone": "Teléfono",
+      "preferredLanguage": "Idioma Preferido",
+      "procedure": "Procedimiento",
+      "surgeryDate": "Fecha de Cirugía",
+      "notes": "Notas del Cirujano",
+      "bddRisk": "Riesgo BDD Detectado"
+    },
+    "procedures": {
+      "rhinoplasty": "Rinoplastia",
+      "breast_augmentation": "Aumento de Busto",
+      "liposuction": "Liposucción",
+      "facelift": "Estiramiento Facial",
+      "blepharoplasty": "Blefaroplastia",
+      "abdominoplasty": "Abdominoplastia",
+      "brow_lift": "Lifting de Cejas",
+      "other": "Otro"
+    }
+  },
+  "appointments": {
+    "title": "Gestión de Citas",
+    "schedule": "Agendar Cita",
+    "type": {
+      "consultation": "Consulta",
+      "preop": "Pre-Operatorio",
+      "surgery": "Cirugía",
+      "postop_check": "Revisión Post-Op"
+    },
+    "status": {
+      "scheduled": "Agendada",
+      "confirmed": "Confirmada",
+      "cancelled": "Cancelada",
+      "no_show": "No Se Presentó",
+      "completed": "Completada"
+    },
+    "reminders": {
+      "sent": "Recordatorio enviado",
+      "24h": "Recordatorio 24 horas antes",
+      "2h": "Recordatorio 2 horas antes"
+    },
+    "waitlist": {
+      "title": "Lista de Espera",
+      "addToWaitlist": "Agregar a Lista de Espera",
+      "notifyPatient": "Notificar Paciente",
+      "slotAvailable": "Hay un espacio disponible para tu procedimiento."
+    }
+  },
+  "postop": {
+    "title": "Seguimiento Post-Operatorio",
+    "checkIn": {
+      "day1": "Día 1",
+      "week1": "Semana 1",
+      "month1": "Mes 1",
+      "month3": "3 Meses"
+    },
+    "messages": {
+      "day1": "Hola {{name}}, ¿cómo te sientes hoy después de tu procedimiento? Por favor comparte cómo te encuentras.",
+      "week1": "{{name}}, es tu revisión de la semana 1. ¿Cómo va tu recuperación? ¿Tienes alguna duda o molestia?",
+      "month1": "{{name}}, ha pasado un mes desde tu cirugía. ¿Cómo te sientes? Nos gustaría saber sobre tu recuperación.",
+      "month3": "{{name}}, han pasado 3 meses. ¿Estás satisfecho/a con los resultados? Tu opinión es muy importante para nosotros."
+    },
+    "symptoms": {
+      "pain": "Dolor",
+      "swelling": "Inflamación",
+      "bruising": "Moretones",
+      "fever": "Fiebre",
+      "discharge": "Secreción",
+      "normal": "Todo normal"
+    },
+    "urgency": {
+      "flag": "Marcar para Revisión Urgente",
+      "flagged": "Marcado para Revisión",
+      "alert": "Este paciente requiere atención inmediata"
+    }
+  },
+  "leads": {
+    "title": "Captación y Calificación de Prospectos",
+    "score": "Puntuación",
+    "qualify": "Calificar con IA",
+    "convertToPatient": "Convertir a Paciente",
+    "source": {
+      "chatbot": "Chatbot",
+      "form": "Formulario",
+      "whatsapp": "WhatsApp",
+      "referral": "Referido"
+    }
+  },
+  "chatbot": {
+    "greeting": "Hola, soy el asistente virtual de {{clinicName}}. Estoy aquí para ayudarte con información sobre nuestros procedimientos y agendar una consulta. ¿En qué puedo ayudarte hoy?",
+    "askName": "¿Cuál es tu nombre?",
+    "askProcedure": "¿Qué procedimiento te interesa?",
+    "askContact": "¿Cuál es tu número de teléfono o correo para contactarte?",
+    "bookConsultation": "Agendar Consulta",
+    "placeholder": "Escribe tu mensaje...",
+    "send": "Enviar",
+    "typing": "Escribiendo..."
+  },
+  "booking": {
+    "title": "Agenda tu Consulta",
+    "subtitle": "Completa el formulario y nos pondremos en contacto contigo en menos de 24 horas.",
+    "form": {
+      "name": "Nombre Completo",
+      "email": "Correo Electrónico",
+      "phone": "Teléfono (WhatsApp)",
+      "procedure": "Procedimiento de Interés",
+      "preferredDate": "Fecha Preferida",
+      "message": "Mensaje o Preguntas (Opcional)",
+      "submit": "Solicitar Consulta",
+      "submitting": "Enviando...",
+      "success": "¡Tu solicitud fue recibida! Te contactaremos pronto.",
+      "error": "Hubo un error. Por favor intenta de nuevo."
+    },
+    "privacy": "Tu información es confidencial y nunca será compartida."
+  },
+  "whatsapp": {
+    "reminder24h": "Hola {{name}}, te recordamos tu cita de {{type}} mañana {{date}} a las {{time}}. Para confirmar responde SÍ, para cancelar responde NO.",
+    "reminder2h": "{{name}}, tu cita es en 2 horas ({{time}}). Te esperamos en {{clinicName}}.",
+    "cancellationOffer": "Hola {{name}}, vemos que necesitas cancelar. ¿Te gustaría reagendar o unirte a nuestra lista de espera para una fecha más conveniente?",
+    "waitlistNotification": "¡Buenas noticias {{name}}! Se ha liberado un espacio para {{procedure}} el {{date}}. ¿Te gustaría tomarlo? Responde SÍ para confirmar.",
+    "postopDay1": "Hola {{name}}, es el Dr. {{doctor}}. ¿Cómo amaneciste después de tu cirugía? Por favor cuéntanos cómo te sientes. 🌟",
+    "postopWeek1": "{{name}}, es tu revisión de la semana 1. ¿Cómo va tu recuperación? Recuerda que es normal tener algo de inflamación. Escríbenos si tienes dudas.",
+    "urgentAlert": "{{name}}, si sientes fiebre alta, sangrado excesivo o dolor severo, comunícate inmediatamente al {{emergencyPhone}}."
+  },
+  "translator": {
+    "title": "Traductor en Tiempo Real",
+    "selectLanguage": "Seleccionar Idioma",
+    "languages": {
+      "en": "Inglés",
+      "es": "Español",
+      "fr": "Francés"
+    },
+    "translating": "Traduciendo...",
+    "doctorSpeaks": "El doctor dice:",
+    "patientSpeaks": "El paciente dice:"
+  },
+  "common": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "view": "Ver",
+    "loading": "Cargando...",
+    "noData": "No hay datos disponibles",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "all": "Todos",
+    "yes": "Sí",
+    "no": "No",
+    "confirm": "Confirmar",
+    "back": "Regresar",
+    "next": "Siguiente",
+    "today": "Hoy",
+    "thisWeek": "Esta Semana",
+    "thisMonth": "Este Mes"
+  }
+}

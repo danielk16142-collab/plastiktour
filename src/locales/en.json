@@ -1,0 +1,195 @@
+{
+  "app": {
+    "name": "PlastiKTour",
+    "tagline": "Comprehensive management for plastic surgery"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "appointments": "Appointments",
+    "patients": "Patients",
+    "leads": "Leads",
+    "postop": "Post-Op Follow-up",
+    "waitlist": "Waitlist",
+    "settings": "Settings"
+  },
+  "dashboard": {
+    "welcome": "Welcome, Doctor",
+    "todayAppointments": "Today's Appointments",
+    "pendingFollowups": "Pending Follow-ups",
+    "activeLeads": "Active Leads",
+    "cancelledThisMonth": "Cancellations This Month",
+    "revenueAtRisk": "Revenue at Risk",
+    "waitlistCount": "On Waitlist"
+  },
+  "patients": {
+    "title": "Patient CRM",
+    "addPatient": "Add Patient",
+    "searchPlaceholder": "Search by name, email or phone...",
+    "status": {
+      "lead": "Lead",
+      "consultation_scheduled": "Consultation Scheduled",
+      "consultation_done": "Consultation Done",
+      "preop": "Pre-Op",
+      "surgery_scheduled": "Surgery Scheduled",
+      "postop": "Post-Op",
+      "follow_up_complete": "Follow-up Complete"
+    },
+    "fields": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone",
+      "preferredLanguage": "Preferred Language",
+      "procedure": "Procedure",
+      "surgeryDate": "Surgery Date",
+      "notes": "Surgeon Notes",
+      "bddRisk": "BDD Risk Detected"
+    },
+    "procedures": {
+      "rhinoplasty": "Rhinoplasty",
+      "breast_augmentation": "Breast Augmentation",
+      "liposuction": "Liposuction",
+      "facelift": "Facelift",
+      "blepharoplasty": "Blepharoplasty",
+      "abdominoplasty": "Abdominoplasty",
+      "brow_lift": "Brow Lift",
+      "other": "Other"
+    }
+  },
+  "appointments": {
+    "title": "Appointment Management",
+    "schedule": "Schedule Appointment",
+    "type": {
+      "consultation": "Consultation",
+      "preop": "Pre-Op",
+      "surgery": "Surgery",
+      "postop_check": "Post-Op Check"
+    },
+    "status": {
+      "scheduled": "Scheduled",
+      "confirmed": "Confirmed",
+      "cancelled": "Cancelled",
+      "no_show": "No-Show",
+      "completed": "Completed"
+    },
+    "reminders": {
+      "sent": "Reminder sent",
+      "24h": "24-hour reminder",
+      "2h": "2-hour reminder"
+    },
+    "waitlist": {
+      "title": "Waitlist",
+      "addToWaitlist": "Add to Waitlist",
+      "notifyPatient": "Notify Patient",
+      "slotAvailable": "A slot is available for your procedure."
+    }
+  },
+  "postop": {
+    "title": "Post-Operative Follow-up",
+    "checkIn": {
+      "day1": "Day 1",
+      "week1": "Week 1",
+      "month1": "Month 1",
+      "month3": "3 Months"
+    },
+    "messages": {
+      "day1": "Hi {{name}}, how are you feeling today after your procedure? Please share how you are doing.",
+      "week1": "{{name}}, this is your week 1 check-in. How is your recovery going? Do you have any concerns?",
+      "month1": "{{name}}, it has been a month since your surgery. How are you feeling? We'd love to hear about your recovery.",
+      "month3": "{{name}}, it has been 3 months. Are you satisfied with the results? Your feedback means a lot to us."
+    },
+    "symptoms": {
+      "pain": "Pain",
+      "swelling": "Swelling",
+      "bruising": "Bruising",
+      "fever": "Fever",
+      "discharge": "Discharge",
+      "normal": "Everything normal"
+    },
+    "urgency": {
+      "flag": "Flag for Urgent Review",
+      "flagged": "Flagged for Review",
+      "alert": "This patient requires immediate attention"
+    }
+  },
+  "leads": {
+    "title": "Lead Capture & Qualification",
+    "score": "Score",
+    "qualify": "Qualify with AI",
+    "convertToPatient": "Convert to Patient",
+    "source": {
+      "chatbot": "Chatbot",
+      "form": "Form",
+      "whatsapp": "WhatsApp",
+      "referral": "Referral"
+    }
+  },
+  "chatbot": {
+    "greeting": "Hello, I'm the virtual assistant of {{clinicName}}. I'm here to help you with information about our procedures and schedule a consultation. How can I help you today?",
+    "askName": "What is your name?",
+    "askProcedure": "What procedure are you interested in?",
+    "askContact": "What is your phone number or email to contact you?",
+    "bookConsultation": "Schedule Consultation",
+    "placeholder": "Type your message...",
+    "send": "Send",
+    "typing": "Typing..."
+  },
+  "booking": {
+    "title": "Schedule Your Consultation",
+    "subtitle": "Fill out the form and we will contact you within 24 hours.",
+    "form": {
+      "name": "Full Name",
+      "email": "Email",
+      "phone": "Phone (WhatsApp)",
+      "procedure": "Procedure of Interest",
+      "preferredDate": "Preferred Date",
+      "message": "Message or Questions (Optional)",
+      "submit": "Request Consultation",
+      "submitting": "Sending...",
+      "success": "Your request was received! We will contact you soon.",
+      "error": "There was an error. Please try again."
+    },
+    "privacy": "Your information is confidential and will never be shared."
+  },
+  "whatsapp": {
+    "reminder24h": "Hi {{name}}, this is a reminder for your {{type}} appointment tomorrow {{date}} at {{time}}. Reply YES to confirm or NO to cancel.",
+    "reminder2h": "{{name}}, your appointment is in 2 hours ({{time}}). We look forward to seeing you at {{clinicName}}.",
+    "cancellationOffer": "Hi {{name}}, we see you need to cancel. Would you like to reschedule or join our waitlist for a more convenient date?",
+    "waitlistNotification": "Great news {{name}}! A slot opened up for {{procedure}} on {{date}}. Would you like to take it? Reply YES to confirm.",
+    "postopDay1": "Hi {{name}}, it's Dr. {{doctor}}. How are you feeling after your surgery? Please let us know. 🌟",
+    "postopWeek1": "{{name}}, this is your week 1 check-in. How is your recovery? Some swelling is normal. Message us with any questions.",
+    "urgentAlert": "{{name}}, if you experience high fever, excessive bleeding or severe pain, contact us immediately at {{emergencyPhone}}."
+  },
+  "translator": {
+    "title": "Real-Time Translator",
+    "selectLanguage": "Select Language",
+    "languages": {
+      "en": "English",
+      "es": "Spanish",
+      "fr": "French"
+    },
+    "translating": "Translating...",
+    "doctorSpeaks": "Doctor says:",
+    "patientSpeaks": "Patient says:"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "loading": "Loading...",
+    "noData": "No data available",
+    "search": "Search",
+    "filter": "Filter",
+    "all": "All",
+    "yes": "Yes",
+    "no": "No",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "today": "Today",
+    "thisWeek": "This Week",
+    "thisMonth": "This Month"
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "app": {
+    "name": "PlastiKTour",
+    "tagline": "Gestion complète pour la chirurgie plastique"
+  },
+  "nav": {
+    "dashboard": "Tableau de Bord",
+    "appointments": "Rendez-vous",
+    "patients": "Patients",
+    "leads": "Prospects",
+    "postop": "Suivi Post-Op",
+    "waitlist": "Liste d'Attente",
+    "settings": "Paramètres"
+  },
+  "dashboard": {
+    "welcome": "Bienvenue, Docteur",
+    "todayAppointments": "Rendez-vous du Jour",
+    "pendingFollowups": "Suivis en Attente",
+    "activeLeads": "Prospects Actifs",
+    "cancelledThisMonth": "Annulations ce Mois",
+    "revenueAtRisk": "Revenus à Risque",
+    "waitlistCount": "En Liste d'Attente"
+  },
+  "patients": {
+    "title": "CRM Patients",
+    "addPatient": "Ajouter un Patient",
+    "searchPlaceholder": "Rechercher par nom, email ou téléphone...",
+    "status": {
+      "lead": "Prospect",
+      "consultation_scheduled": "Consultation Planifiée",
+      "consultation_done": "Consultation Effectuée",
+      "preop": "Pré-Opératoire",
+      "surgery_scheduled": "Chirurgie Planifiée",
+      "postop": "Post-Opératoire",
+      "follow_up_complete": "Suivi Complet"
+    },
+    "fields": {
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "email": "Email",
+      "phone": "Téléphone",
+      "preferredLanguage": "Langue Préférée",
+      "procedure": "Procédure",
+      "surgeryDate": "Date de Chirurgie",
+      "notes": "Notes du Chirurgien",
+      "bddRisk": "Risque TDC Détecté"
+    },
+    "procedures": {
+      "rhinoplasty": "Rhinoplastie",
+      "breast_augmentation": "Augmentation Mammaire",
+      "liposuction": "Liposuccion",
+      "facelift": "Lifting",
+      "blepharoplasty": "Blépharoplastie",
+      "abdominoplasty": "Abdominoplastie",
+      "brow_lift": "Lifting Frontal",
+      "other": "Autre"
+    }
+  },
+  "appointments": {
+    "title": "Gestion des Rendez-vous",
+    "schedule": "Planifier un Rendez-vous",
+    "type": {
+      "consultation": "Consultation",
+      "preop": "Pré-Op",
+      "surgery": "Chirurgie",
+      "postop_check": "Contrôle Post-Op"
+    },
+    "status": {
+      "scheduled": "Planifié",
+      "confirmed": "Confirmé",
+      "cancelled": "Annulé",
+      "no_show": "Absent",
+      "completed": "Complété"
+    },
+    "reminders": {
+      "sent": "Rappel envoyé",
+      "24h": "Rappel 24 heures avant",
+      "2h": "Rappel 2 heures avant"
+    },
+    "waitlist": {
+      "title": "Liste d'Attente",
+      "addToWaitlist": "Ajouter à la Liste d'Attente",
+      "notifyPatient": "Notifier le Patient",
+      "slotAvailable": "Un créneau est disponible pour votre procédure."
+    }
+  },
+  "postop": {
+    "title": "Suivi Post-Opératoire",
+    "checkIn": {
+      "day1": "Jour 1",
+      "week1": "Semaine 1",
+      "month1": "Mois 1",
+      "month3": "3 Mois"
+    },
+    "messages": {
+      "day1": "Bonjour {{name}}, comment vous sentez-vous aujourd'hui après votre procédure? Partagez-nous votre état de santé.",
+      "week1": "{{name}}, c'est votre bilan de la semaine 1. Comment se passe votre récupération? Avez-vous des questions?",
+      "month1": "{{name}}, un mois s'est écoulé depuis votre chirurgie. Comment allez-vous? Partagez-nous vos nouvelles.",
+      "month3": "{{name}}, 3 mois se sont écoulés. Êtes-vous satisfait(e) des résultats? Votre avis compte beaucoup pour nous."
+    },
+    "symptoms": {
+      "pain": "Douleur",
+      "swelling": "Gonflement",
+      "bruising": "Ecchymoses",
+      "fever": "Fièvre",
+      "discharge": "Écoulement",
+      "normal": "Tout est normal"
+    },
+    "urgency": {
+      "flag": "Marquer pour Examen Urgent",
+      "flagged": "Marqué pour Examen",
+      "alert": "Ce patient nécessite une attention immédiate"
+    }
+  },
+  "leads": {
+    "title": "Capture et Qualification de Prospects",
+    "score": "Score",
+    "qualify": "Qualifier avec IA",
+    "convertToPatient": "Convertir en Patient",
+    "source": {
+      "chatbot": "Chatbot",
+      "form": "Formulaire",
+      "whatsapp": "WhatsApp",
+      "referral": "Référence"
+    }
+  },
+  "chatbot": {
+    "greeting": "Bonjour, je suis l'assistant virtuel de {{clinicName}}. Je suis là pour vous aider avec des informations sur nos procédures et planifier une consultation. Comment puis-je vous aider aujourd'hui?",
+    "askName": "Quel est votre nom?",
+    "askProcedure": "Quelle procédure vous intéresse?",
+    "askContact": "Quel est votre numéro de téléphone ou email pour vous contacter?",
+    "bookConsultation": "Planifier une Consultation",
+    "placeholder": "Tapez votre message...",
+    "send": "Envoyer",
+    "typing": "En train d'écrire..."
+  },
+  "booking": {
+    "title": "Planifiez Votre Consultation",
+    "subtitle": "Remplissez le formulaire et nous vous contacterons dans les 24 heures.",
+    "form": {
+      "name": "Nom Complet",
+      "email": "Email",
+      "phone": "Téléphone (WhatsApp)",
+      "procedure": "Procédure d'Intérêt",
+      "preferredDate": "Date Préférée",
+      "message": "Message ou Questions (Optionnel)",
+      "submit": "Demander une Consultation",
+      "submitting": "Envoi en cours...",
+      "success": "Votre demande a été reçue! Nous vous contacterons bientôt.",
+      "error": "Une erreur s'est produite. Veuillez réessayer."
+    },
+    "privacy": "Vos informations sont confidentielles et ne seront jamais partagées."
+  },
+  "whatsapp": {
+    "reminder24h": "Bonjour {{name}}, rappel pour votre rendez-vous {{type}} demain {{date}} à {{time}}. Répondez OUI pour confirmer ou NON pour annuler.",
+    "reminder2h": "{{name}}, votre rendez-vous est dans 2 heures ({{time}}). Nous vous attendons à {{clinicName}}.",
+    "cancellationOffer": "Bonjour {{name}}, nous voyons que vous devez annuler. Souhaitez-vous reprogrammer ou rejoindre notre liste d'attente?",
+    "waitlistNotification": "Bonne nouvelle {{name}}! Un créneau s'est libéré pour {{procedure}} le {{date}}. Souhaitez-vous le prendre? Répondez OUI pour confirmer.",
+    "postopDay1": "Bonjour {{name}}, c'est le Dr. {{doctor}}. Comment vous sentez-vous après votre chirurgie? 🌟",
+    "postopWeek1": "{{name}}, c'est votre bilan de la semaine 1. Comment se passe votre récupération? Un peu de gonflement est normal. Écrivez-nous si vous avez des questions.",
+    "urgentAlert": "{{name}}, si vous ressentez de la fièvre élevée, des saignements excessifs ou des douleurs sévères, contactez-nous immédiatement au {{emergencyPhone}}."
+  },
+  "translator": {
+    "title": "Traducteur en Temps Réel",
+    "selectLanguage": "Sélectionner la Langue",
+    "languages": {
+      "en": "Anglais",
+      "es": "Espagnol",
+      "fr": "Français"
+    },
+    "translating": "Traduction en cours...",
+    "doctorSpeaks": "Le médecin dit:",
+    "patientSpeaks": "Le patient dit:"
+  },
+  "common": {
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "view": "Voir",
+    "loading": "Chargement...",
+    "noData": "Aucune donnée disponible",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "all": "Tous",
+    "yes": "Oui",
+    "no": "Non",
+    "confirm": "Confirmer",
+    "back": "Retour",
+    "next": "Suivant",
+    "today": "Aujourd'hui",
+    "thisWeek": "Cette Semaine",
+    "thisMonth": "Ce Mois"
+  }
+}
