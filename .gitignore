@@ -6,3 +6,10 @@ dist/
 .env.*.local
 *.log
 .DS_Store
+
+# Ruflo local secrets and runtime data
+.claude-flow/data/
+.claude-flow/logs/
+.claude-flow/sessions/
+.swarm/
+ruvector.db
