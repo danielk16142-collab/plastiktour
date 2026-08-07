@@ -2,12 +2,27 @@ import "./index.css";
 import { Composition } from "remotion";
 import { HelloWorld, myCompSchema } from "./HelloWorld";
 import { Logo, myCompSchema2 } from "./HelloWorld/Logo";
+import { PlastikIntro, plastikIntroSchema } from "./PlastikIntro";
 
 // Each <Composition> is an entry in the sidebar!
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      <Composition
+        id="PlastikIntro"
+        component={PlastikIntro}
+        durationInFrames={90}
+        fps={30}
+        width={1080}
+        height={1920}
+        schema={plastikIntroSchema}
+        defaultProps={{
+          wordmark: "Plastik Tour",
+          tagline: "Tu transformación, acompañada de principio a fin",
+        }}
+      />
+
       <Composition
         // You can take the "id" to render a video:
         // npx remotion render HelloWorld
