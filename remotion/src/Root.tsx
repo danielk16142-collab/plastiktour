@@ -3,12 +3,24 @@ import { Composition } from "remotion";
 import { HelloWorld, myCompSchema } from "./HelloWorld";
 import { Logo, myCompSchema2 } from "./HelloWorld/Logo";
 import { PlastikIntro, plastikIntroSchema } from "./PlastikIntro";
+import { PlastikServices, plastikServicesSchema } from "./PlastikServices";
 
 // Each <Composition> is an entry in the sidebar!
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      <Composition
+        id="PlastikServices"
+        component={PlastikServices}
+        durationInFrames={405}
+        fps={30}
+        width={1080}
+        height={1920}
+        schema={plastikServicesSchema}
+        defaultProps={{}}
+      />
+
       <Composition
         id="PlastikIntro"
         component={PlastikIntro}
