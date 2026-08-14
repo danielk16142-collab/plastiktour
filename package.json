@@ -13,7 +13,7 @@
     "@wix/bookings": "^1.0.0",
     "@wix/crm": "^1.0.0",
     "@wix/dashboard": "^1.0.0",
-    "@wix/design-system": "^7.0.0",
+    "@wix/design-system": "^1.312.0",
     "@wix/sdk": "^1.14.0",
     "i18next": "^23.11.5",
     "react": "^18.3.1",
