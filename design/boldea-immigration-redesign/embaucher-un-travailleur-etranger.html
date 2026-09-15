@@ -284,6 +284,7 @@
   <symbol id="i-chev" viewBox="0 0 10 10"><path d="M1.5 3.5 5 7l3.5-3.5"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
   <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15 9-4.5 2-1.5 4.5 4.5-2Z"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.4 2.6 3.6 5.7 3.6 9s-1.2 6.4-3.6 9c-2.4-2.6-3.6-5.7-3.6-9s1.2-6.4 3.6-9Z"/></symbol>
   <symbol id="i-house" viewBox="0 0 24 24"><path d="m3.5 11 8.5-7 8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-6h4v6"/></symbol>
   <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6Z"/><path d="M15 3v4h4M9 12h7M9 16h7M9 8h3"/></symbol>
   <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.6-5.9M20 4v5h-5"/></symbol>
@@ -331,18 +332,19 @@
       <div class="nav-item" data-nav>
         <button type="button" class="nav-top" aria-expanded="false">Pour les particuliers <svg class="chev" viewBox="0 0 10 10"><use href="#i-chev"/></svg></button>
         <div class="mega">
-          <a href="index-fr.html#tracks"><svg class="mega-icon"><use href="#i-compass"/></svg><span><span class="mega-label">Trouvez votre programme</span><span class="mega-desc">Découvrez le parcours adapté à votre profil</span></span></a>
-          <a href="index-fr.html#tracks"><svg class="mega-icon"><use href="#i-house"/></svg><span><span class="mega-label">Résidence permanente</span><span class="mega-desc">Entrée express et Candidats des provinces</span></span></a>
-          <a href="index-fr.html#tracks"><svg class="mega-icon"><use href="#i-doc"/></svg><span><span class="mega-label">Permis de travail et d'études</span><span class="mega-desc">Un statut temporaire qui mène vers la résidence permanente</span></span></a>
-          <a href="index-fr.html#tracks"><svg class="mega-icon"><use href="#i-refresh"/></svg><span><span class="mega-label">Prolonger ou rétablir son statut</span><span class="mega-desc">Renouvellements, modifications, rétablissements</span></span></a>
+          <a href="immigration-quebec-canada.html"><svg class="mega-icon"><use href="#i-compass"/></svg><span><span class="mega-label">Immigration Québec-Canada</span><span class="mega-desc">Comprendre les deux processus de sélection</span></span></a>
+          <a href="peq.html"><svg class="mega-icon"><use href="#i-house"/></svg><span><span class="mega-label">PEQ</span><span class="mega-desc">Programme de l'Expérience Québécoise</span></span></a>
+          <a href="entree-express.html"><svg class="mega-icon"><use href="#i-doc"/></svg><span><span class="mega-label">Entrée express</span><span class="mega-desc">Résidence permanente pour le reste du Canada</span></span></a>
+          <a href="etudier-au-canada.html"><svg class="mega-icon"><use href="#i-refresh"/></svg><span><span class="mega-label">Étudier au Canada</span><span class="mega-desc">Permis d'études et permis de travail post-diplôme</span></span></a>
         </div>
       </div>
       <div class="nav-item is-open is-active" data-nav>
         <button type="button" class="nav-top" aria-expanded="true">Pour les employeurs <svg class="chev" viewBox="0 0 10 10"><use href="#i-chev"/></svg></button>
         <div class="mega">
           <a class="is-current" href="#main"><svg class="mega-icon"><use href="#i-people"/></svg><span><span class="mega-label">Embaucher un travailleur étranger</span><span class="mega-desc">EIMT et recrutement de candidats</span></span></a>
-          <a href="index-fr.html#tracks"><svg class="mega-icon"><use href="#i-shield"/></svg><span><span class="mega-label">Audits de conformité</span><span class="mega-desc">Restez conforme aux règles d'IRCC et d'EDSC</span></span></a>
-          <a href="index-fr.html#tracks"><svg class="mega-icon"><use href="#i-briefcase"/></svg><span><span class="mega-label">Intégration et rétention</span><span class="mega-desc">Installez vos nouvelles recrues et leur famille</span></span></a>
+          <a href="entreprises.html"><svg class="mega-icon"><use href="#i-globe"/></svg><span><span class="mega-label">Tous nos services</span><span class="mega-desc">EIMT, recrutement, conformité, rétention</span></span></a>
+          <a href="entreprises.html#audits"><svg class="mega-icon"><use href="#i-shield"/></svg><span><span class="mega-label">Audits de conformité</span><span class="mega-desc">Restez conforme aux règles d'IRCC et d'EDSC</span></span></a>
+          <a href="entreprises.html#retention"><svg class="mega-icon"><use href="#i-briefcase"/></svg><span><span class="mega-label">Rétention des travailleurs</span><span class="mega-desc">De temporaire à permanent</span></span></a>
         </div>
       </div>
       <a href="index-fr.html#why">À propos</a>
@@ -359,7 +361,7 @@
     <ol>
       <li><a href="index-fr.html">Accueil</a></li>
       <li aria-hidden="true"><svg viewBox="0 0 10 10"><use href="#i-chev"/></svg></li>
-      <li><a href="index-fr.html#tracks">Employeurs</a></li>
+      <li><a href="entreprises.html">Employeurs</a></li>
       <li aria-hidden="true"><svg viewBox="0 0 10 10"><use href="#i-chev"/></svg></li>
       <li aria-current="page">Embaucher un travailleur étranger</li>
     </ol>
@@ -489,11 +491,10 @@
       <div class="footer-col">
         <h4>Particuliers</h4>
         <ul>
-          <li><a href="index-fr.html#tracks">Trouvez votre programme</a></li>
-          <li><a href="index-fr.html#tracks">Résidence permanente</a></li>
-          <li><a href="index-fr.html#tracks">Permis de travail et d'études</a></li>
-          <li><a href="index-fr.html#tracks">Prolongations de statut</a></li>
-          <li><a href="index-fr.html#tracks">Soutien à l'installation</a></li>
+          <li><a href="immigration-quebec-canada.html">Immigration Québec-Canada</a></li>
+          <li><a href="peq.html">PEQ</a></li>
+          <li><a href="entree-express.html">Entrée express</a></li>
+          <li><a href="etudier-au-canada.html">Étudier au Canada</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -501,8 +502,8 @@
         <ul>
           <li><a href="#main">Embaucher un travailleur étranger</a></li>
           <li><a href="#candidats">Nos candidats</a></li>
-          <li><a href="index-fr.html#tracks">Audits de conformité</a></li>
-          <li><a href="index-fr.html#tracks">Services de rétention</a></li>
+          <li><a href="entreprises.html#audits">Audits de conformité</a></li>
+          <li><a href="entreprises.html#retention">Rétention des travailleurs</a></li>
         </ul>
       </div>
       <div class="footer-col">
