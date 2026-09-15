@@ -217,6 +217,8 @@
   <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 3v18"/><path d="M5 4.5h13l-3 4 3 4H5"/></symbol>
   <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M6 8h12M6 8l-3 6a3.5 3.5 0 0 0 6 0L6 8Zm12 0l-3 6a3.5 3.5 0 0 0 6 0l-3-6Z"/></symbol>
   <symbol id="i-family" viewBox="0 0 24 24"><circle cx="8" cy="7" r="2.6"/><circle cx="16" cy="8.5" r="2"/><path d="M3 20c.5-3.2 2.4-5 5-5s4.5 1.8 5 5M14 20c.3-2.4 1.7-4 3.5-4s3.2 1.6 3.5 4"/></symbol>
+  <symbol id="i-graduate" viewBox="0 0 24 24"><path d="m2 9 10-4.5L22 9l-10 4.5Z"/><path d="M6 11v5c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-5"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.5-4.5"/></symbol>
   <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14 21v-7h2.4l.4-3H14V9c0-.9.2-1.5 1.6-1.5H17V5c-.3 0-1.2-.1-2.3-.1-2.3 0-3.7 1.4-3.7 3.9V11H8.5v3H11v7Z"/></symbol>
   <symbol id="i-in" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M7.5 10v6.5M7.5 7.2v.1M12 16.5V13c0-1.4.9-2.4 2.2-2.4 1.3 0 2 .9 2 2.4v3.5"/></symbol>
   <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1"/></symbol>
@@ -280,8 +282,6 @@
     <ol>
       <li><a href="index-fr.html">Accueil</a></li>
       <li aria-hidden="true"><svg viewBox="0 0 10 10"><use href="#i-chev"/></svg></li>
-      <li><a href="index-fr.html#tracks">Particuliers</a></li>
-      <li aria-hidden="true"><svg viewBox="0 0 10 10"><use href="#i-chev"/></svg></li>
       <li aria-current="page">Immigration Québec-Canada</li>
     </ol>
   </nav>
@@ -295,101 +295,64 @@
       <p class="lede">Le Québec sélectionne lui-même les personnes immigrantes qu'il souhaite accueillir, en vertu de l'Accord Canada-Québec, tandis que le gouvernement fédéral conserve la responsabilité de l'admission finale. Comprendre comment ces deux processus s'articulent est la première étape pour bâtir la bonne stratégie.</p>
       <div class="service-actions">
         <a class="btn-solid" href="#cta">Réservez une consultation</a>
-        <a class="btn-outline" href="#programmes">Voir les programmes</a>
+        <a class="btn-outline" href="#directory">Voir tous les services</a>
       </div>
     </div>
   </section>
 
-  <!-- ============ BLOCK 2 — RICH TEXT (flexible length, plain CMS body copy) ============ -->
-  <section>
-    <div class="prose-wrap">
-      <span class="block-tag">Bloc CMS · Texte riche (longueur libre)</span>
-      <div class="section-head">
-        <h2>Deux processus, une seule demande de résidence permanente.</h2>
-      </div>
-      <div class="cms-richtext">
-        <p>Contrairement aux autres provinces, le Québec évalue et sélectionne lui-même la plupart des personnes qui immigrent sur son territoire de façon permanente. Une fois sélectionné par le Québec, votre dossier est transmis au gouvernement fédéral, qui demeure responsable des vérifications de sécurité, de santé et de l'admission finale au Canada.</p>
-        <p>Selon votre profil — travailleur qualifié, étudiant, entrepreneur ou membre de la famille d'un résident — la voie à suivre et les délais varient considérablement. C'est pourquoi une évaluation personnalisée est essentielle avant de déposer une demande.</p>
-      </div>
-      <ul class="checklist">
-        <li><svg><use href="#i-check"/></svg> Le Québec gère sa propre sélection via des programmes comme le PSTQ</li>
-        <li><svg><use href="#i-check"/></svg> Une fois sélectionné par le Québec, le dossier est transmis à IRCC pour la résidence permanente</li>
-        <li><svg><use href="#i-check"/></svg> Certains programmes fédéraux s'appliquent différemment aux résidents du Québec</li>
-        <li><svg><use href="#i-check"/></svg> Le regroupement familial et l'asile suivent des voies distinctes</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ============ BLOCK 3 — PROGRAM / PATHWAY CARDS (optional, repeat per page) ============ -->
-  <section class="program-section" id="programmes">
+  <!-- ============ BLOCK 2 — CATEGORIZED SERVICE DIRECTORY (the real content of this page: every "particuliers" service, grouped into 3 categories instead of one long menu) ============ -->
+  <section class="program-section" id="directory">
     <div class="wrap">
-      <span class="block-tag">Bloc CMS · Grille de programmes (0 à N cartes)</span>
+      <span class="block-tag">Bloc CMS · Répertoire par catégorie (N catégories × N services chacune)</span>
       <div class="section-head centered">
-        <span class="eyebrow" style="align-self:center;">Principales voies</span>
-        <h2>Quatre façons courantes de s'établir au Québec.</h2>
+        <span class="eyebrow" style="align-self:center;">Tous nos services</span>
+        <h2>Regroupés par catégorie plutôt que par menu.</h2>
+        <p>Que vous visiez la résidence permanente, un statut temporaire, ou que votre dossier soit plus complexe, voici où commencer.</p>
       </div>
-      <div class="program-grid">
-        <a class="program-card" href="#"><span class="tag">Québec</span><svg><use href="#i-doc"/></svg><h3>PSTQ</h3><p>Programme de sélection des travailleurs qualifiés, pour les personnes dont la formation et l'expérience répondent aux besoins du marché du travail québécois.</p></a>
-        <a class="program-card" href="peq.html"><span class="tag">Québec</span><svg><use href="#i-house"/></svg><h3>Programme de l'expérience québécoise</h3><p>Pour les étudiants diplômés et travailleurs temporaires qui ont déjà une expérience significative au Québec.</p></a>
-        <a class="program-card" href="#"><span class="tag">Fédéral</span><svg><use href="#i-family"/></svg><h3>Regroupement familial</h3><p>Pour parrainer un époux, un enfant ou un autre membre de la famille admissible souhaitant s'établir au Canada.</p></a>
-        <a class="program-card" href="#"><span class="tag">Fédéral</span><svg><use href="#i-scale"/></svg><h3>Motifs humanitaires</h3><p>Pour les situations exceptionnelles où les voies habituelles ne s'appliquent pas.</p></a>
+
+      <div class="obligation-group">
+        <h3 style="font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 1rem;font-weight:600;">Résidence permanente</h3>
+        <div class="program-grid">
+          <a class="program-card" href="entree-express.html"><svg><use href="#i-compass"/></svg><h3>Entrée express</h3><p>Résidence permanente pour le reste du Canada, à l'exception du Québec.</p></a>
+          <a class="program-card" href="#"><svg><use href="#i-family"/></svg><h3>Parrainage</h3><p>Parrainer un époux, un enfant ou un autre membre de la famille admissible.</p></a>
+          <a class="program-card" href="#"><svg><use href="#i-doc"/></svg><h3>PSTQ</h3><p>Programme de sélection des travailleurs qualifiés du Québec.</p></a>
+          <a class="program-card" href="#"><svg><use href="#i-search"/></svg><h3>Évaluation pour immigration</h3><p>Une évaluation complète de votre profil et des voies qui s'offrent à vous.</p></a>
+          <a class="program-card" href="peq.html"><svg><use href="#i-house"/></svg><h3>PEQ</h3><p>Programme de l'Expérience Québécoise, pour diplômés et travailleurs qualifiés.</p></a>
+          <a class="program-card" href="#"><svg><use href="#i-scale"/></svg><h3>Asile et CISR</h3><p>Demandes d'asile et représentation devant la Commission de l'immigration et du statut de réfugié.</p></a>
+        </div>
+      </div>
+
+      <div class="obligation-group" style="margin-top:2.5rem;">
+        <h3 style="font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 1rem;font-weight:600;">Résidence temporaire</h3>
+        <div class="program-grid">
+          <a class="program-card" href="#"><svg><use href="#i-graduate"/></svg><h3>Permis de travail post-diplôme</h3><p>Travaillez au Canada après vos études pour bâtir votre expérience.</p></a>
+          <a class="program-card" href="#"><svg><use href="#i-briefcase"/></svg><h3>Permis de travail avec EIMT</h3><p>Un permis de travail appuyé par une Étude d'impact sur le marché du travail.</p></a>
+          <a class="program-card" href="etudier-au-canada.html"><svg><use href="#i-doc"/></svg><h3>Permis d'études</h3><p>Étudier au Canada, la première étape vers de nombreuses voies d'immigration.</p></a>
+          <a class="program-card" href="#"><svg><use href="#i-refresh"/></svg><h3>Permis de travail pour la mobilité internationale</h3><p>Un permis de travail sans EIMT, pour les catégories admissibles.</p></a>
+        </div>
+      </div>
+
+      <div class="obligation-group" style="margin-top:2.5rem;">
+        <h3 style="font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 1rem;font-weight:600;">Services spéciaux</h3>
+        <div class="program-grid">
+          <a class="program-card" href="#"><svg><use href="#i-shield"/></svg><h3>Situations complexes</h3><p>Un accompagnement pour les dossiers qui sortent des sentiers battus.</p></a>
+          <a class="program-card" href="#"><svg><use href="#i-people"/></svg><h3>Services d'établissement</h3><p>Un soutien concret pour vos premiers mois de vie au Canada.</p></a>
+          <a class="program-card" href="#"><svg><use href="#i-flag"/></svg><h3>Refus</h3><p>Contester un refus ou présenter une nouvelle demande en toute connaissance de cause.</p></a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ BLOCK 4 — PROCESS STEPS (optional, only for procedural pages) ============ -->
-  <section>
-    <div class="wrap">
-      <span class="block-tag">Bloc CMS · Étapes du processus (optionnel)</span>
-      <div class="section-head centered">
-        <span class="eyebrow" style="align-self:center;">Le processus</span>
-        <h2>De l'évaluation à l'installation.</h2>
-      </div>
-      <div class="process-list">
-        <div class="step"><div class="step-num">01</div><h3>Évaluation du profil</h3><p>Nous identifions le ou les programmes pour lesquels vous êtes admissible.</p></div>
-        <div class="step"><div class="step-num">02</div><h3>Sélection</h3><p>Dépôt de la demande de sélection auprès du Québec et/ou du gouvernement fédéral.</p></div>
-        <div class="step"><div class="step-num">03</div><h3>Résidence permanente</h3><p>Une fois sélectionné, dépôt de la demande de résidence permanente auprès d'IRCC.</p></div>
-        <div class="step"><div class="step-num">04</div><h3>Admission et installation</h3><p>Nous vous accompagnons jusqu'à votre arrivée et votre installation.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ BLOCK 5 — FAQ (optional) ============ -->
-  <section>
-    <div class="prose-wrap">
-      <span class="block-tag">Bloc CMS · Questions fréquentes (0 à N questions)</span>
-      <div class="section-head">
-        <span class="eyebrow">Questions fréquentes</span>
-        <h2>Ce que les particuliers nous demandent le plus souvent.</h2>
-      </div>
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary>Dois-je passer par le Québec ou directement par le fédéral ? <span class="plus">+</span></summary>
-          <p>Cela dépend de votre profil et de votre destination visée. Nous évaluons votre situation pour déterminer la voie applicable dès la première consultation.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Combien de temps prend le processus ? <span class="plus">+</span></summary>
-          <p>Les délais varient selon le programme choisi et le volume de demandes traité par les autorités. Nous vous donnons un échéancier réaliste dès le départ.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Puis-je inclure ma famille dans ma demande ? <span class="plus">+</span></summary>
-          <p>Dans la plupart des programmes, oui. Les conditions varient selon le lien familial et le programme choisi.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ BLOCK 6 — RELATED PAGES (required: internal cross-linking) ============ -->
+  <!-- ============ BLOCK 6 — RELATED PAGES (required: cross-sell to the other audience, since this page already covers every particuliers service) ============ -->
   <section class="related-section">
     <div class="wrap">
       <span class="block-tag">Bloc CMS · Pages liées (obligatoire)</span>
       <div class="section-head">
-        <span class="eyebrow">À lire aussi</span>
+        <span class="eyebrow">Vous êtes plutôt employeur ?</span>
       </div>
       <div class="related-grid">
-        <a class="related-card" href="index-fr.html#tracks"><span>Résidence permanente</span><svg><use href="#i-chev" style="transform:rotate(-90deg)"/></svg></a>
-        <a class="related-card" href="index-fr.html#tracks"><span>Permis de travail et d'études</span><svg><use href="#i-chev" style="transform:rotate(-90deg)"/></svg></a>
-        <a class="related-card" href="etudier-au-canada.html"><span>Étudier au Canada</span><svg><use href="#i-chev" style="transform:rotate(-90deg)"/></svg></a>
+        <a class="related-card" href="embaucher-un-travailleur-etranger.html"><span>Embaucher un travailleur étranger</span><svg><use href="#i-chev" style="transform:rotate(-90deg)"/></svg></a>
+        <a class="related-card" href="embaucher-un-travailleur-etranger.html#candidats"><span>Voir nos candidats</span><svg><use href="#i-chev" style="transform:rotate(-90deg)"/></svg></a>
       </div>
     </div>
   </section>
@@ -405,7 +368,7 @@
         </div>
         <div class="cta-actions">
           <a class="btn-light" href="tel:+15149783210">Réservez une consultation</a>
-          <a class="btn-ghost" href="index-fr.html#tracks">Voir tous nos services</a>
+          <a class="btn-ghost" href="#directory">Voir tous nos services</a>
         </div>
       </div>
     </div>
@@ -430,11 +393,10 @@
       <div class="footer-col">
         <h4>Particuliers</h4>
         <ul>
-          <li><a href="#main">Immigration Québec-Canada</a></li>
-          <li><a href="index-fr.html#tracks">Résidence permanente</a></li>
-          <li><a href="index-fr.html#tracks">Permis de travail et d'études</a></li>
+          <li><a href="entree-express.html">Entrée express</a></li>
+          <li><a href="peq.html">PEQ</a></li>
           <li><a href="etudier-au-canada.html">Étudier au Canada</a></li>
-          <li><a href="index-fr.html#tracks">Soutien à l'installation</a></li>
+          <li><a href="#directory">Tous nos services</a></li>
         </ul>
       </div>
       <div class="footer-col">
