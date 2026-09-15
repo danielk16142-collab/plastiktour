@@ -1,4 +1,4 @@
-<title>Immigration Québec-Canada</title>
+<title>Étudier au Canada</title>
 <style>
   :root{
     --paper:#ffffff;
@@ -85,76 +85,67 @@
   .breadcrumb svg{width:9px;height:9px;stroke:var(--slate);fill:none;stroke-width:2;transform:rotate(90deg);}
 
   /* ================= CMS CONTENT BLOCKS ================= */
-  /* Block 1 — Hero (fixed: every page has this) */
   .cms-hero{padding:clamp(2rem,5vw,3.25rem) 0 clamp(2rem,5vw,3rem);}
   .cms-hero .prose-wrap{display:flex;flex-direction:column;gap:1.1rem;}
   .cms-hero h1{font-size:clamp(1.9rem,3.6vw,2.7rem);max-width:26ch;}
-  .cms-hero p.lede{max-width:68ch;color:var(--ink-2);font-size:1.05rem;}
   .service-actions{display:flex;gap:.85rem;flex-wrap:wrap;margin-top:.4rem;}
   .btn-solid{background:var(--accent);color:var(--accent-contrast);padding:.85rem 1.5rem;border-radius:999px;text-decoration:none;font-weight:700;font-size:.92rem;box-shadow:0 8px 16px -8px var(--shadow);}
   .btn-solid:hover{background:var(--accent-2);}
   .btn-outline{border:1.5px solid var(--line);color:var(--ink);padding:.85rem 1.5rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;}
   .btn-outline:hover{border-color:var(--accent);color:var(--accent);}
 
-  section{padding:clamp(2.75rem,5.5vw,4rem) 0;}
-  .section-head{max-width:720px;margin:0 0 1.75rem;display:flex;flex-direction:column;gap:.75rem;}
-  .section-head.centered{margin-inline:auto;text-align:center;align-items:center;}
-  .section-head h2{font-size:clamp(1.5rem,2.8vw,2rem);}
-  .section-head p{margin:0;color:var(--slate);font-size:1rem;max-width:65ch;}
+  section{padding:0;}
+  .section-head{max-width:720px;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:.6rem;}
+  .section-head p{margin:0;color:var(--slate);font-size:.95rem;max-width:65ch;}
+  .cms-block{padding:clamp(2.25rem,5vw,3.25rem) 0;border-top:1px solid var(--line);}
 
-  /* Block 2 — Rich text (CMS body copy, arbitrary length) */
-  .cms-richtext{max-width:68ch;color:var(--ink-2);}
+  .cms-richtext{max-width:72ch;color:var(--ink-2);}
   .cms-richtext p{margin:0 0 1rem;}
   .cms-richtext p:last-child{margin-bottom:0;}
-  .cms-richtext.bordered{border-top:1px solid var(--line);padding-top:2.5rem;}
+  .cms-richtext a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;}
 
-  /* Block 3 — Checklist (key facts / eligibility points) */
-  .checklist{list-style:none;margin:1.4rem 0 0;padding:0;display:flex;flex-direction:column;gap:.9rem;max-width:68ch;}
-  .checklist li{display:flex;gap:.75rem;align-items:flex-start;color:var(--ink-2);font-size:.98rem;}
-  .checklist svg{width:19px;height:19px;stroke:var(--accent);fill:none;stroke-width:1.8;flex:none;margin-top:.15rem;}
+  /* Block — Simple numbered steps (no titles, no per-step CTA: lighter than the Volet block) */
+  .steps-simple{display:flex;flex-direction:column;gap:1.3rem;margin-top:1rem;max-width:72ch;}
+  .step-line{display:flex;gap:1rem;align-items:flex-start;}
+  .step-line-num{
+    width:34px;height:34px;border-radius:50%;background:var(--paper-2);border:1.5px solid var(--accent);
+    color:var(--accent);font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:.9rem;
+    display:flex;align-items:center;justify-content:center;flex:none;
+  }
+  .step-line p{margin:0;color:var(--ink-2);font-size:.96rem;}
 
-  /* Block 4 — Program / pathway cards grid */
-  .program-section{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-  .program-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.1rem;}
-  .program-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:1.5rem;display:flex;flex-direction:column;gap:.7rem;text-decoration:none;transition:transform .15s ease, box-shadow .15s ease;}
-  .program-card:hover{transform:translateY(-3px);box-shadow:0 16px 30px -18px var(--shadow);}
-  .program-card svg{width:24px;height:24px;stroke:var(--accent);fill:none;stroke-width:1.5;}
-  .program-card h3{font-size:1.02rem;font-family:'Public Sans',sans-serif;font-weight:700;color:var(--ink);}
-  .program-card p{margin:0;font-size:.85rem;color:var(--slate);}
-  .program-card .tag{align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:var(--paper-2);border-radius:999px;padding:.2rem .55rem;}
+  /* Block — Photo pair (placeholder imagery with real captions, 1..N images) */
+  .photo-pair{display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem;margin:1.75rem 0;}
+  .photo-frame{position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden;
+    background:radial-gradient(circle at 25% 15%, var(--paper-2), transparent 55%),
+      linear-gradient(155deg, var(--accent) 0%, var(--accent-2) 100%);
+  }
+  .photo-frame::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(115deg, rgba(255,255,255,.08) 0 2px, transparent 2px 26px);}
+  .photo-frame .cap{position:absolute;left:.8rem;bottom:.8rem;background:rgba(36,27,20,.55);backdrop-filter:blur(3px);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.05em;text-transform:uppercase;padding:.3rem .6rem;border-radius:999px;}
 
-  /* Block 5 — Process steps (optional, only when a page describes a procedure) */
-  .process-list{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;position:relative;}
-  .process-list::before{content:'';position:absolute;top:24px;left:10%;right:10%;height:1px;background:repeating-linear-gradient(90deg, var(--line) 0 8px, transparent 8px 14px);z-index:0;}
-  .step{position:relative;display:flex;flex-direction:column;gap:.6rem;z-index:1;}
-  .step-num{width:46px;height:46px;border-radius:50%;background:var(--paper);border:1.5px solid var(--accent);color:var(--accent);font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:.92rem;display:flex;align-items:center;justify-content:center;}
-  .step h3{font-size:.95rem;font-family:'Public Sans',sans-serif;font-weight:700;}
-  .step p{margin:0;font-size:.82rem;color:var(--slate);}
+  /* Block — Resource links row (blog / social / newsletter, 1..N items) */
+  .resource-links{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.2rem;}
+  .resource-link{
+    display:flex;align-items:center;gap:.55rem;background:var(--paper);border:1px solid var(--line);
+    border-radius:999px;padding:.6rem 1rem;text-decoration:none;font-size:.86rem;font-weight:600;color:var(--ink);
+  }
+  .resource-link:hover{border-color:var(--accent);color:var(--accent);}
+  .resource-link svg{width:16px;height:16px;stroke:var(--accent);fill:none;stroke-width:1.7;flex:none;}
 
-  /* Block 6 — FAQ (optional) */
-  .faq-list{display:flex;flex-direction:column;gap:.75rem;max-width:820px;}
-  .faq-item{border:1px solid var(--line);border-radius:14px;background:var(--paper);overflow:hidden;}
-  .faq-item summary{list-style:none;cursor:pointer;padding:1.1rem 1.3rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-weight:600;font-size:.98rem;}
-  .faq-item summary::-webkit-details-marker{display:none;}
-  .faq-item summary .plus{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--accent);color:var(--accent);flex:none;display:flex;align-items:center;justify-content:center;font-size:1rem;line-height:1;transition:transform .15s ease;}
-  .faq-item[open] summary .plus{transform:rotate(45deg);}
-  .faq-item p{margin:0;padding:0 1.3rem 1.2rem;color:var(--ink-2);font-size:.92rem;max-width:68ch;}
+  /* Block — Service tiers (2..N comparison cards, plain text) */
+  .tier-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem;margin-top:1.4rem;}
+  .tier-card{background:var(--paper-2);border:1px solid var(--line);border-radius:16px;padding:1.4rem;display:flex;flex-direction:column;gap:.5rem;}
+  .tier-card h4{margin:0;font-size:1rem;font-weight:700;color:var(--ink);}
+  .tier-card p{margin:0;font-size:.88rem;color:var(--ink-2);}
 
-  /* Block 7 — Related pages (cross-linking, every page) */
-  .related-section{border-top:1px solid var(--line);}
-  .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;}
-  .related-card{display:flex;align-items:center;justify-content:space-between;gap:.75rem;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.3rem;text-decoration:none;}
-  .related-card:hover{border-color:var(--accent);}
-  .related-card span{font-weight:600;font-size:.92rem;color:var(--ink);}
-  .related-card svg{width:14px;height:14px;stroke:var(--accent);fill:none;stroke-width:2;flex:none;}
-
-  /* Block 8 — CTA banner (fixed: every page ends with this) */
+  /* Block — CTA banner (required) */
   .cta-banner{background:linear-gradient(155deg, var(--accent), var(--accent-2));color:var(--accent-contrast);border-radius:24px;margin:0 clamp(1.25rem,4vw,3rem);padding:clamp(2.25rem,5.5vw,3.5rem);display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:space-between;}
   .cta-banner h2{color:var(--accent-contrast);font-size:clamp(1.5rem,2.8vw,2rem);max-width:24ch;}
   .cta-banner p{margin:.5rem 0 0;color:var(--accent-contrast);opacity:.85;max-width:38ch;}
   .cta-actions{display:flex;gap:.85rem;flex-wrap:wrap;}
   .btn-light{background:var(--accent-contrast);color:var(--accent);padding:.85rem 1.5rem;border-radius:999px;text-decoration:none;font-weight:700;font-size:.92rem;}
   .btn-ghost{border:1.5px solid var(--accent-contrast);color:var(--accent-contrast);padding:.85rem 1.5rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;}
+  .cta-wrap{padding:clamp(3rem,6vw,4rem) 0;}
 
   /* ---------- Footer (shared shell) ---------- */
   footer{background:var(--ink);color:#f1e4d8;padding-top:3.5rem;}
@@ -175,25 +166,17 @@
   .footer-bottom .legal-links{display:flex;gap:1.2rem;}
   .footer-bottom a{font-size:.78rem;color:#c9b6a3;}
 
-  /* ---------- Dev-only block labels (remove when handed to CMS) ---------- */
-  .block-tag{
-    display:inline-block;margin:0 0 .9rem;font-family:'IBM Plex Mono',monospace;font-size:.62rem;
-    letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-contrast);
-    border:1px dashed var(--accent);border-radius:999px;padding:.15rem .6rem;
-  }
+  /* ---------- Dev-only block labels ---------- */
+  .block-tag{display:inline-block;margin:0 0 .9rem;font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-contrast);border:1px dashed var(--accent);border-radius:999px;padding:.15rem .6rem;}
 
-  @media (max-width:900px){
-    .process-list{grid-template-columns:1fr 1fr;row-gap:1.75rem;}
-    .process-list::before{display:none;}
-    .footer-grid{grid-template-columns:1fr 1fr;}
-  }
   @media (max-width:760px){
     .nav-links,.nav-cta{display:none;}
     .nav-toggle{display:flex;}
     .footer-grid{grid-template-columns:1fr;}
     .topbar .wrap{font-size:.72rem;}
-    .process-list{grid-template-columns:1fr;}
+    .photo-pair{grid-template-columns:1fr;}
   }
+  @media (min-width:761px) and (max-width:900px){ .footer-grid{grid-template-columns:1fr 1fr;} }
   @media (prefers-reduced-motion:reduce){ *{transition:none !important;} }
 </style>
 
@@ -213,11 +196,10 @@
   <symbol id="i-people" viewBox="0 0 24 24"><circle cx="8.5" cy="8" r="3"/><circle cx="16.5" cy="9.5" r="2.3"/><path d="M2.5 20c.6-3.4 3-5.5 6-5.5s5.4 2.1 6 5.5M14.8 14.8c2.3.3 4 2.1 4.5 5.2"/></symbol>
   <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4.5 6v6c0 4.6 3.2 7.9 7.5 9 4.3-1.1 7.5-4.4 7.5-9V6Z"/><path d="m9 12 2 2 4-4"/></symbol>
   <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="1.5"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></symbol>
-  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5 9 17l11-11"/></symbol>
-  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 3v18"/><path d="M5 4.5h13l-3 4 3 4H5"/></symbol>
-  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M6 8h12M6 8l-3 6a3.5 3.5 0 0 0 6 0L6 8Zm12 0l-3 6a3.5 3.5 0 0 0 6 0l-3-6Z"/></symbol>
-  <symbol id="i-family" viewBox="0 0 24 24"><circle cx="8" cy="7" r="2.6"/><circle cx="16" cy="8.5" r="2"/><path d="M3 20c.5-3.2 2.4-5 5-5s4.5 1.8 5 5M14 20c.3-2.4 1.7-4 3.5-4s3.2 1.6 3.5 4"/></symbol>
+  <symbol id="i-graduate" viewBox="0 0 24 24"><path d="m2 9 10-4.5L22 9l-10 4.5Z"/><path d="M6 11v5c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-5"/></symbol>
+  <symbol id="i-blog" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6Z"/><path d="M9 12h7M9 16h5"/></symbol>
   <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14 21v-7h2.4l.4-3H14V9c0-.9.2-1.5 1.6-1.5H17V5c-.3 0-1.2-.1-2.3-.1-2.3 0-3.7 1.4-3.7 3.9V11H8.5v3H11v7Z"/></symbol>
+  <symbol id="i-mail-2" viewBox="0 0 24 24"><path d="M3.5 5.5h17v13h-17z"/><path d="m3.5 6 8.5 7 8.5-7"/></symbol>
   <symbol id="i-in" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M7.5 10v6.5M7.5 7.2v.1M12 16.5V13c0-1.4.9-2.4 2.2-2.4 1.3 0 2 .9 2 2.4v3.5"/></symbol>
   <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1"/></symbol>
 </svg>
@@ -252,10 +234,10 @@
       <div class="nav-item is-open is-active" data-nav>
         <button type="button" class="nav-top" aria-expanded="true">Pour les particuliers <svg class="chev" viewBox="0 0 10 10"><use href="#i-chev"/></svg></button>
         <div class="mega">
-          <a class="is-current" href="#main"><svg class="mega-icon"><use href="#i-compass"/></svg><span><span class="mega-label">Immigration Québec-Canada</span><span class="mega-desc">Comprendre les deux processus de sélection</span></span></a>
+          <a href="immigration-quebec-canada.html"><svg class="mega-icon"><use href="#i-compass"/></svg><span><span class="mega-label">Immigration Québec-Canada</span><span class="mega-desc">Comprendre les deux processus de sélection</span></span></a>
           <a href="peq.html"><svg class="mega-icon"><use href="#i-house"/></svg><span><span class="mega-label">PEQ</span><span class="mega-desc">Programme de l'Expérience Québécoise</span></span></a>
           <a href="entree-express.html"><svg class="mega-icon"><use href="#i-doc"/></svg><span><span class="mega-label">Entrée express</span><span class="mega-desc">Résidence permanente pour le reste du Canada</span></span></a>
-          <a href="etudier-au-canada.html"><svg class="mega-icon"><use href="#i-refresh"/></svg><span><span class="mega-label">Étudier au Canada</span><span class="mega-desc">Permis d'études et permis de travail post-diplôme</span></span></a>
+          <a class="is-current" href="#main"><svg class="mega-icon"><use href="#i-graduate"/></svg><span><span class="mega-label">Étudier au Canada</span><span class="mega-desc">Permis d'études et permis de travail post-diplôme</span></span></a>
         </div>
       </div>
       <div class="nav-item" data-nav>
@@ -270,7 +252,7 @@
       <a href="index-fr.html#stories">Ressources</a>
     </div>
 
-    <a class="nav-cta" href="#cta">Réservez une consultation</a>
+    <a class="nav-cta" href="https://www.boldeaimmigration.com/service-page/initial-consultation-canada-immigration">Réservez une consultation</a>
     <button class="nav-toggle" type="button" aria-label="Ouvrir le menu"><svg><use href="#i-menu"/></svg></button>
   </div>
 </nav>
@@ -280,132 +262,108 @@
     <ol>
       <li><a href="index-fr.html">Accueil</a></li>
       <li aria-hidden="true"><svg viewBox="0 0 10 10"><use href="#i-chev"/></svg></li>
-      <li><a href="index-fr.html#tracks">Particuliers</a></li>
+      <li><a href="immigration-quebec-canada.html">Particuliers</a></li>
       <li aria-hidden="true"><svg viewBox="0 0 10 10"><use href="#i-chev"/></svg></li>
-      <li aria-current="page">Immigration Québec-Canada</li>
+      <li aria-current="page">Étudier au Canada</li>
     </ol>
   </nav>
 
-  <!-- ============ BLOCK 1 — HERO (required on every page) ============ -->
+  <!-- BLOCK: HERO (required) -->
   <section class="cms-hero">
     <div class="prose-wrap">
-      <span class="block-tag">Bloc CMS · En-tête (obligatoire)</span>
-      <span class="eyebrow">Services aux particuliers</span>
-      <h1 style="margin-top:.6rem;">Immigrer au Québec et au Canada</h1>
-      <p class="lede">Le Québec sélectionne lui-même les personnes immigrantes qu'il souhaite accueillir, en vertu de l'Accord Canada-Québec, tandis que le gouvernement fédéral conserve la responsabilité de l'admission finale. Comprendre comment ces deux processus s'articulent est la première étape pour bâtir la bonne stratégie.</p>
+      <span class="block-tag">Bloc · En-tête (obligatoire)</span>
+      <span class="eyebrow">Particuliers</span>
+      <h1 style="margin-top:.6rem;">Étudier au Canada</h1>
+      <div class="cms-richtext" style="margin-top:.4rem;">
+        <p>Étudier au Canada est une des voies qui peuvent mener à la résidence permanente. Bien que vos études doivent être une intention temporaire, le gouvernement canadien a conçu de nombreuses voies vers la résidence permanente pour ceux qui ont acquis des compétences ciblées. Lorsqu'un programme d'études admissible est choisi, vous pouvez accéder à un permis de travail post-diplôme (PTPD) qui vous permet d'acquérir de l'expérience de travail au Canada et ainsi augmenter vos chances d'obtention de la résidence permanente.</p>
+      </div>
       <div class="service-actions">
-        <a class="btn-solid" href="#cta">Réservez une consultation</a>
-        <a class="btn-outline" href="#programmes">Voir les programmes</a>
+        <a class="btn-solid" href="https://www.boldeaimmigration.com/service-page/initial-consultation-canada-immigration">Me représenter pour un permis d'études</a>
       </div>
     </div>
   </section>
 
-  <!-- ============ BLOCK 2 — RICH TEXT (flexible length, plain CMS body copy) ============ -->
-  <section>
+  <!-- BLOCK: Rich text + simple numbered steps (lighter than the Volet block: no titles, no per-step CTA) -->
+  <section class="cms-block">
     <div class="prose-wrap">
-      <span class="block-tag">Bloc CMS · Texte riche (longueur libre)</span>
+      <span class="block-tag">Bloc · Étapes simples (répétable, sans titres ni CTA individuels)</span>
       <div class="section-head">
-        <h2>Deux processus, une seule demande de résidence permanente.</h2>
+        <h2>Comment s'installer pour étudier au Canada</h2>
       </div>
       <div class="cms-richtext">
-        <p>Contrairement aux autres provinces, le Québec évalue et sélectionne lui-même la plupart des personnes qui immigrent sur son territoire de façon permanente. Une fois sélectionné par le Québec, votre dossier est transmis au gouvernement fédéral, qui demeure responsable des vérifications de sécurité, de santé et de l'admission finale au Canada.</p>
-        <p>Selon votre profil — travailleur qualifié, étudiant, entrepreneur ou membre de la famille d'un résident — la voie à suivre et les délais varient considérablement. C'est pourquoi une évaluation personnalisée est essentielle avant de déposer une demande.</p>
+        <p>Les établissements d'enseignement désignés du Canada ont pour mandat de partager leurs connaissances avec le monde. Ainsi, une grande population d'étudiants internationaux est présente au Canada.</p>
       </div>
-      <ul class="checklist">
-        <li><svg><use href="#i-check"/></svg> Le Québec gère sa propre sélection via des programmes comme le PSTQ</li>
-        <li><svg><use href="#i-check"/></svg> Une fois sélectionné par le Québec, le dossier est transmis à IRCC pour la résidence permanente</li>
-        <li><svg><use href="#i-check"/></svg> Certains programmes fédéraux s'appliquent différemment aux résidents du Québec</li>
-        <li><svg><use href="#i-check"/></svg> Le regroupement familial et l'asile suivent des voies distinctes</li>
-      </ul>
-    </div>
-  </section>
+      <div class="steps-simple">
+        <div class="step-line">
+          <div class="step-line-num">1</div>
+          <p>Votre première étape consiste à être admis dans l'une de ces écoles, dans un programme aligné sur votre parcours professionnel.</p>
+        </div>
+        <div class="step-line">
+          <div class="step-line-num">2</div>
+          <p>Votre deuxième étape consiste à préparer votre dossier de demande de permis d'études pour la durée de votre programme. Même après avoir été accepté dans une école et avoir éventuellement payé les frais de première année, votre permis d'études pourrait être refusé. Enfin, l'obtention d'un permis d'études ne doit pas être prise à la légère, car, selon votre parcours, il peut vous donner des ailes mais aussi mettre du plomb dans vos projets d'immigration canadienne.</p>
+        </div>
+      </div>
 
-  <!-- ============ BLOCK 3 — PROGRAM / PATHWAY CARDS (optional, repeat per page) ============ -->
-  <section class="program-section" id="programmes">
-    <div class="wrap">
-      <span class="block-tag">Bloc CMS · Grille de programmes (0 à N cartes)</span>
-      <div class="section-head centered">
-        <span class="eyebrow" style="align-self:center;">Principales voies</span>
-        <h2>Quatre façons courantes de s'établir au Québec.</h2>
-      </div>
-      <div class="program-grid">
-        <a class="program-card" href="#"><span class="tag">Québec</span><svg><use href="#i-doc"/></svg><h3>PSTQ</h3><p>Programme de sélection des travailleurs qualifiés, pour les personnes dont la formation et l'expérience répondent aux besoins du marché du travail québécois.</p></a>
-        <a class="program-card" href="peq.html"><span class="tag">Québec</span><svg><use href="#i-house"/></svg><h3>Programme de l'expérience québécoise</h3><p>Pour les étudiants diplômés et travailleurs temporaires qui ont déjà une expérience significative au Québec.</p></a>
-        <a class="program-card" href="#"><span class="tag">Fédéral</span><svg><use href="#i-family"/></svg><h3>Regroupement familial</h3><p>Pour parrainer un époux, un enfant ou un autre membre de la famille admissible souhaitant s'établir au Canada.</p></a>
-        <a class="program-card" href="#"><span class="tag">Fédéral</span><svg><use href="#i-scale"/></svg><h3>Motifs humanitaires</h3><p>Pour les situations exceptionnelles où les voies habituelles ne s'appliquent pas.</p></a>
+      <!-- BLOCK: Photo pair (placeholder imagery, real captions) -->
+      <span class="block-tag" style="margin-top:1.5rem;">Bloc · Paire de photos (1 à N images, légendes réelles)</span>
+      <div class="photo-pair">
+        <div class="photo-frame"><span class="cap">College Campus</span></div>
+        <div class="photo-frame"><span class="cap">Graduate from a canadian school</span></div>
       </div>
     </div>
   </section>
 
-  <!-- ============ BLOCK 4 — PROCESS STEPS (optional, only for procedural pages) ============ -->
-  <section>
-    <div class="wrap">
-      <span class="block-tag">Bloc CMS · Étapes du processus (optionnel)</span>
-      <div class="section-head centered">
-        <span class="eyebrow" style="align-self:center;">Le processus</span>
-        <h2>De l'évaluation à l'installation.</h2>
-      </div>
-      <div class="process-list">
-        <div class="step"><div class="step-num">01</div><h3>Évaluation du profil</h3><p>Nous identifions le ou les programmes pour lesquels vous êtes admissible.</p></div>
-        <div class="step"><div class="step-num">02</div><h3>Sélection</h3><p>Dépôt de la demande de sélection auprès du Québec et/ou du gouvernement fédéral.</p></div>
-        <div class="step"><div class="step-num">03</div><h3>Résidence permanente</h3><p>Une fois sélectionné, dépôt de la demande de résidence permanente auprès d'IRCC.</p></div>
-        <div class="step"><div class="step-num">04</div><h3>Admission et installation</h3><p>Nous vous accompagnons jusqu'à votre arrivée et votre installation.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ BLOCK 5 — FAQ (optional) ============ -->
-  <section>
+  <!-- BLOCK: Resource links row (optional) -->
+  <section class="cms-block">
     <div class="prose-wrap">
-      <span class="block-tag">Bloc CMS · Questions fréquentes (0 à N questions)</span>
+      <span class="block-tag">Bloc · Liens ressources (optionnel, 1 à N liens)</span>
       <div class="section-head">
-        <span class="eyebrow">Questions fréquentes</span>
-        <h2>Ce que les particuliers nous demandent le plus souvent.</h2>
+        <span class="eyebrow">Aller plus loin</span>
       </div>
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary>Dois-je passer par le Québec ou directement par le fédéral ? <span class="plus">+</span></summary>
-          <p>Cela dépend de votre profil et de votre destination visée. Nous évaluons votre situation pour déterminer la voie applicable dès la première consultation.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Combien de temps prend le processus ? <span class="plus">+</span></summary>
-          <p>Les délais varient selon le programme choisi et le volume de demandes traité par les autorités. Nous vous donnons un échéancier réaliste dès le départ.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Puis-je inclure ma famille dans ma demande ? <span class="plus">+</span></summary>
-          <p>Dans la plupart des programmes, oui. Les conditions varient selon le lien familial et le programme choisi.</p>
-        </details>
+      <div class="cms-richtext">
+        <p>Pour en savoir plus sur le processus pour devenir étudiant international, rendez-vous sur notre blog, suivez-nous sur Facebook ou inscrivez-vous pour obtenir notre newsletter.</p>
+      </div>
+      <div class="resource-links">
+        <a class="resource-link" href="#"><svg><use href="#i-blog"/></svg> Notre blog</a>
+        <a class="resource-link" href="#"><svg><use href="#i-fb"/></svg> Facebook</a>
+        <a class="resource-link" href="#"><svg><use href="#i-mail-2"/></svg> Infolettre</a>
       </div>
     </div>
   </section>
 
-  <!-- ============ BLOCK 6 — RELATED PAGES (required: internal cross-linking) ============ -->
-  <section class="related-section">
-    <div class="wrap">
-      <span class="block-tag">Bloc CMS · Pages liées (obligatoire)</span>
+  <!-- BLOCK: Service tiers (2..N plain comparison cards) -->
+  <section class="cms-block">
+    <div class="prose-wrap">
+      <span class="block-tag">Bloc · Options de service (2 à N cartes)</span>
       <div class="section-head">
-        <span class="eyebrow">À lire aussi</span>
+        <span class="eyebrow">Comment nous pouvons vous aider</span>
+        <h2>Deux façons de préparer votre permis d'études.</h2>
       </div>
-      <div class="related-grid">
-        <a class="related-card" href="index-fr.html#tracks"><span>Résidence permanente</span><svg><use href="#i-chev" style="transform:rotate(-90deg)"/></svg></a>
-        <a class="related-card" href="index-fr.html#tracks"><span>Permis de travail et d'études</span><svg><use href="#i-chev" style="transform:rotate(-90deg)"/></svg></a>
-        <a class="related-card" href="etudier-au-canada.html"><span>Étudier au Canada</span><svg><use href="#i-chev" style="transform:rotate(-90deg)"/></svg></a>
+      <div class="tier-grid">
+        <div class="tier-card">
+          <h4>Représentation complète</h4>
+          <p>Nous pouvons vous aider dans la préparation de votre permis d'études, avec une représentation complète.</p>
+        </div>
+        <div class="tier-card">
+          <h4>Accompagnement de groupe ou privé</h4>
+          <p>Si vous vous sentez capable de faire la majeure partie du travail mais que vous ne savez pas comment bien le faire, nous proposons également des services de groupe ou individuels privés à une fraction du coût. Vous pourrez monter votre dossier sous la supervision d'un consultant réglementé en immigration.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ BLOCK 7 — CTA BANNER (required on every page) ============ -->
-  <section id="cta">
+  <!-- BLOCK: CTA banner (required) -->
+  <section class="cta-wrap">
     <div class="wrap">
-      <span class="block-tag">Bloc CMS · Bandeau d'appel à l'action (obligatoire)</span>
+      <span class="block-tag" style="margin-left:clamp(1.25rem,4vw,3rem);">Bloc · Bandeau d'appel à l'action (obligatoire)</span>
       <div class="cta-banner">
         <div>
-          <h2>Prêt à évaluer votre admissibilité ?</h2>
-          <p>Réservez une consultation pour connaître le programme qui correspond réellement à votre profil.</p>
+          <h2>Prêt à préparer votre permis d'études ?</h2>
+          <p>Réservez une consultation pour choisir la formule qui correspond à votre budget et à votre situation.</p>
         </div>
         <div class="cta-actions">
-          <a class="btn-light" href="tel:+15149783210">Réservez une consultation</a>
-          <a class="btn-ghost" href="index-fr.html#tracks">Voir tous nos services</a>
+          <a class="btn-light" href="https://www.boldeaimmigration.com/service-page/initial-consultation-canada-immigration">Me représenter pour un permis d'études</a>
+          <a class="btn-ghost" href="immigration-quebec-canada.html">Voir les autres programmes</a>
         </div>
       </div>
     </div>
@@ -430,11 +388,10 @@
       <div class="footer-col">
         <h4>Particuliers</h4>
         <ul>
-          <li><a href="#main">Immigration Québec-Canada</a></li>
-          <li><a href="index-fr.html#tracks">Résidence permanente</a></li>
-          <li><a href="index-fr.html#tracks">Permis de travail et d'études</a></li>
-          <li><a href="etudier-au-canada.html">Étudier au Canada</a></li>
-          <li><a href="index-fr.html#tracks">Soutien à l'installation</a></li>
+          <li><a href="immigration-quebec-canada.html">Immigration Québec-Canada</a></li>
+          <li><a href="peq.html">PEQ</a></li>
+          <li><a href="entree-express.html">Entrée express</a></li>
+          <li><a href="#main">Étudier au Canada</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -443,7 +400,6 @@
           <li><a href="embaucher-un-travailleur-etranger.html">Embaucher un travailleur étranger</a></li>
           <li><a href="embaucher-un-travailleur-etranger.html#candidats">Nos candidats</a></li>
           <li><a href="index-fr.html#tracks">Audits de conformité</a></li>
-          <li><a href="index-fr.html#tracks">Services de rétention</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -452,7 +408,6 @@
           <li><a href="index-fr.html#why">À propos d'Angela</a></li>
           <li><a href="index-fr.html#why">Pourquoi un CRIC</a></li>
           <li><a href="index-fr.html#stories">Témoignages de clients</a></li>
-          <li><a href="#">Carrières</a></li>
         </ul>
       </div>
       <div class="footer-col">
