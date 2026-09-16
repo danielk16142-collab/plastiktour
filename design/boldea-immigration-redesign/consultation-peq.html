@@ -1,0 +1,621 @@
+<title>Consultation PEQ</title>
+<style>
+  :root{
+    --paper:#ffffff;
+    --paper-2:#f3f2f0;
+    --ink:#241b14;
+    --ink-2:#4a3c31;
+    --slate:#7a6a5c;
+    --line:#e6dac9;
+    --accent:#6d3116;
+    --accent-2:#8f4a29;
+    --accent-contrast:#fdf8f3;
+    --shadow:rgba(36,27,20,.12);
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:'Public Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    font-size:16px;line-height:1.6;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  h1,h2,h3{font-family:'Newsreader',Georgia,serif;font-weight:560;line-height:1.14;text-wrap:balance;margin:0;color:var(--ink);}
+  em{font-style:italic;color:var(--accent);}
+  .eyebrow{
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.72rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:.5rem;
+  }
+  .eyebrow::before{content:'';width:1.4rem;height:1px;background:var(--accent);display:inline-block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem);}
+  .prose-wrap{max-width:920px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem);}
+  .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+  button{font:inherit;}
+
+  /* ---------- Topbar / Nav (shared shell) ---------- */
+  .topbar{background:var(--ink);color:var(--accent-contrast);}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;font-size:.8rem;padding-top:.55rem;padding-bottom:.55rem;color:#f1e4d8;}
+  .topbar a{text-decoration:none;opacity:.92;}
+  .topbar a:hover{opacity:1;text-decoration:underline;}
+  .topbar-left,.topbar-right{display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;}
+  .topbar-right{gap:.9rem;}
+  .lang-switch{display:flex;gap:.4rem;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.04em;}
+  .lang-switch a{color:#f1e4d8;opacity:.65;text-decoration:none;padding:.1rem .25rem;}
+  .lang-switch a[aria-current="true"]{opacity:1;text-decoration:underline;text-underline-offset:3px;}
+  .topbar-icon{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;flex:none;}
+
+  .mainnav{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--paper) 92%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:box-shadow .2s ease;}
+  .mainnav.is-scrolled{box-shadow:0 8px 24px -12px var(--shadow);}
+  .mainnav .wrap{display:flex;align-items:center;gap:2rem;padding-top:.85rem;padding-bottom:.85rem;}
+  .brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;margin-right:auto;}
+  .brand-mark{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Newsreader',serif;font-style:italic;font-weight:600;font-size:1.15rem;color:var(--accent);flex:none;}
+  .brand-text{display:flex;flex-direction:column;line-height:1.15;}
+  .brand-text strong{font-family:'Newsreader',serif;font-weight:600;font-size:1.08rem;}
+  .brand-text span{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);}
+
+  .nav-links{display:flex;align-items:center;gap:.25rem;}
+  .nav-item{position:relative;}
+  .nav-item > a, .nav-item > button.nav-top{display:flex;align-items:center;gap:.3rem;background:none;border:none;cursor:pointer;padding:.6rem .8rem;border-radius:8px;font-size:.94rem;font-weight:500;color:var(--ink-2);text-decoration:none;}
+  .nav-item > a:hover, .nav-item > button.nav-top:hover, .nav-item.is-open > button.nav-top, .nav-item.is-active > button.nav-top{color:var(--accent);background:var(--paper-2);}
+  .chev{width:9px;height:9px;flex:none;transition:transform .15s ease;}
+  .nav-item.is-open .chev{transform:rotate(180deg);}
+  .mega{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);width:320px;background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 20px 40px -16px var(--shadow);padding:.6rem;display:none;}
+  .nav-item.is-open .mega{display:block;}
+  .mega a{display:flex;gap:.7rem;align-items:flex-start;padding:.65rem .7rem;border-radius:10px;text-decoration:none;}
+  .mega a:hover{background:var(--paper-2);}
+  .mega a.is-current{background:var(--paper-2);}
+  .mega-icon{width:18px;height:18px;flex:none;margin-top:.15rem;stroke:var(--accent);fill:none;stroke-width:1.6;}
+  .mega-label{font-weight:600;font-size:.88rem;color:var(--ink);}
+  .mega-desc{font-size:.78rem;color:var(--slate);margin-top:.1rem;}
+
+  .nav-cta{background:var(--accent);color:var(--accent-contrast);padding:.65rem 1.15rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.88rem;white-space:nowrap;box-shadow:0 8px 16px -8px var(--shadow);}
+  .nav-cta:hover{background:var(--accent-2);}
+  .nav-toggle{display:none;background:none;border:1px solid var(--line);border-radius:8px;padding:.5rem;cursor:pointer;}
+  .nav-toggle svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:1.8;}
+
+  /* ---------- Breadcrumb ---------- */
+  .breadcrumb{padding:1.1rem 0 0;}
+  .breadcrumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.03em;color:var(--slate);}
+  .breadcrumb a{text-decoration:none;color:var(--slate);}
+  .breadcrumb a:hover{color:var(--accent);text-decoration:underline;}
+  .breadcrumb li[aria-current]{color:var(--ink-2);}
+  .breadcrumb svg{width:9px;height:9px;stroke:var(--slate);fill:none;stroke-width:2;transform:rotate(90deg);}
+
+  /* ---------- Photo placeholder (every section carries one, per the real page) ---------- */
+  .photo-frame{
+    position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/3;
+    background:radial-gradient(circle at 25% 15%, var(--paper-2), transparent 55%),
+      linear-gradient(155deg, var(--accent) 0%, var(--accent-2) 100%);
+  }
+  .photo-frame::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(115deg, rgba(255,255,255,.08) 0 2px, transparent 2px 26px);}
+  .photo-frame .cap{position:absolute;left:.8rem;bottom:.8rem;background:rgba(36,27,20,.55);backdrop-filter:blur(3px);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.05em;text-transform:uppercase;padding:.3rem .6rem;border-radius:999px;}
+  .photo-frame.portrait{aspect-ratio:1/1;border-radius:14px;}
+
+  /* Two-column split used throughout (text | image), alternates side via .reverse */
+  .split{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,4.5vw,3.5rem);align-items:center;}
+  .split.reverse{grid-template-columns:.9fr 1.1fr;}
+  .split.reverse .split-media{order:2;}
+
+  /* ================= CONTENT ================= */
+  .cms-hero{padding:clamp(2.25rem,5vw,3.5rem) 0 clamp(2.25rem,5vw,3rem);}
+  .cms-hero h1{font-size:clamp(1.9rem,3.6vw,2.6rem);}
+  .service-actions{display:flex;gap:.85rem;flex-wrap:wrap;margin-top:1rem;}
+  .btn-solid{background:var(--accent);color:var(--accent-contrast);padding:.85rem 1.5rem;border-radius:999px;text-decoration:none;font-weight:700;font-size:.92rem;box-shadow:0 8px 16px -8px var(--shadow);}
+  .btn-solid:hover{background:var(--accent-2);}
+  .btn-outline{border:1.5px solid var(--line);color:var(--ink);padding:.85rem 1.5rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;}
+  .btn-outline:hover{border-color:var(--accent);color:var(--accent);}
+
+  section{padding:0;}
+  .cms-block{padding:clamp(2.5rem,5.5vw,3.75rem) 0;border-top:1px solid var(--line);}
+  .cms-block:nth-of-type(even){background:var(--paper-2);}
+  .section-head{max-width:680px;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:.6rem;}
+  .section-head p{margin:0;color:var(--slate);font-size:1rem;max-width:65ch;}
+
+  .cms-richtext{color:var(--ink-2);}
+  .cms-richtext p{margin:0 0 1rem;}
+  .cms-richtext p:last-child{margin-bottom:0;}
+
+  /* Highlight callout (accent-bordered, with its own image) */
+  .highlight{background:var(--paper);border:1.5px solid var(--accent);border-radius:20px;padding:clamp(1.6rem,4vw,2.2rem);}
+  .highlight p{margin:0 0 1rem;color:var(--ink);font-size:1.02rem;font-weight:500;}
+  .highlight p:last-of-type{margin-bottom:0;}
+
+  /* Numbered process steps (repeatable, reused for all 3 processes on this page) */
+  .volets-numbered{display:flex;flex-direction:column;gap:0;}
+  .volet-num{display:flex;gap:1.2rem;padding:1.5rem 0;border-top:1px dashed var(--line);}
+  .volet-num:first-child{border-top:none;padding-top:0;}
+  .volet-num-badge{
+    width:40px;height:40px;border-radius:50%;background:var(--paper);border:1.5px solid var(--accent);
+    color:var(--accent);font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:.95rem;
+    display:flex;align-items:center;justify-content:center;flex:none;
+  }
+  .volet-num-body h3{font-size:1.05rem;margin-bottom:.5rem;}
+  .volet-num-body p{margin:0;color:var(--ink-2);font-size:.92rem;}
+
+  .checklist{list-style:none;margin:1.2rem 0 1.4rem;padding:0;display:flex;flex-direction:column;gap:.8rem;}
+  .checklist li{display:flex;gap:.7rem;align-items:flex-start;color:var(--ink-2);font-size:.95rem;}
+  .checklist svg{width:18px;height:18px;stroke:var(--accent);fill:none;stroke-width:1.8;flex:none;margin-top:.15rem;}
+
+  /* Case-study / testimonial cards */
+  .case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.3rem;}
+  .case-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;}
+  .case-card .photo-frame{border-radius:0;aspect-ratio:16/10;}
+  .case-body{padding:1.5rem;display:flex;flex-direction:column;gap:.9rem;flex:1;}
+  .case-body h3{font-size:1.08rem;}
+  .case-body p{margin:0;color:var(--ink-2);font-size:.9rem;}
+  .case-links{display:flex;flex-direction:column;gap:.4rem;margin-top:.3rem;}
+  .case-links a{
+    font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.04em;color:var(--accent);
+    text-decoration:underline;text-underline-offset:2px;
+  }
+  .case-body .btn-solid{align-self:flex-start;margin-top:.3rem;}
+
+  .cta-banner{background:linear-gradient(155deg, var(--accent), var(--accent-2));color:var(--accent-contrast);border-radius:24px;margin:0 clamp(1.25rem,4vw,3rem);padding:clamp(2.25rem,5.5vw,3.5rem);display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:space-between;}
+  .cta-banner h2{color:var(--accent-contrast);font-size:clamp(1.5rem,2.8vw,2rem);max-width:24ch;}
+  .cta-banner p{margin:.5rem 0 0;color:var(--accent-contrast);opacity:.85;max-width:38ch;}
+  .cta-actions{display:flex;gap:.85rem;flex-wrap:wrap;}
+  .btn-light{background:var(--accent-contrast);color:var(--accent);padding:.85rem 1.5rem;border-radius:999px;text-decoration:none;font-weight:700;font-size:.92rem;}
+  .btn-ghost{border:1.5px solid var(--accent-contrast);color:var(--accent-contrast);padding:.85rem 1.5rem;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;}
+  .cta-wrap{padding:clamp(3rem,6vw,4rem) 0;}
+
+  /* ---------- Footer (shared shell) ---------- */
+  footer{background:var(--ink);color:#f1e4d8;padding-top:3.5rem;}
+  footer a{text-decoration:none;color:#f1e4d8;opacity:.8;font-size:.88rem;}
+  footer a:hover{opacity:1;text-decoration:underline;}
+  .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1.2fr;gap:2.2rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(241,228,216,.16);}
+  .footer-brand p{color:#d9c8b8;font-size:.88rem;max-width:30ch;margin:.9rem 0 1.2rem;}
+  .footer-col h4{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#c99a72;margin:0 0 1rem;}
+  .footer-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.65rem;}
+  .footer-contact li{display:flex;gap:.6rem;align-items:flex-start;font-size:.88rem;color:#f1e4d8;opacity:.85;}
+  .footer-contact svg{width:15px;height:15px;stroke:#c99a72;fill:none;stroke-width:1.7;flex:none;margin-top:.15rem;}
+  .social-row{display:flex;gap:.7rem;margin-top:1.1rem;}
+  .social-row a{width:34px;height:34px;border-radius:50%;border:1px solid rgba(241,228,216,.3);display:flex;align-items:center;justify-content:center;opacity:1;}
+  .social-row svg{width:15px;height:15px;stroke:#f1e4d8;fill:none;stroke-width:1.6;}
+  .accred-row{display:flex;gap:.6rem;margin-top:1rem;flex-wrap:wrap;}
+  .accred-badge{border:1px solid rgba(241,228,216,.3);border-radius:8px;padding:.35rem .6rem;font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.04em;color:#e6cdb6;}
+  .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem;padding:1.4rem clamp(1.25rem,4vw,3rem);font-size:.78rem;color:#c9b6a3;}
+  .footer-bottom .legal-links{display:flex;gap:1.2rem;}
+  .footer-bottom a{font-size:.78rem;color:#c9b6a3;}
+
+  @media (max-width:900px){
+    .split, .split.reverse{grid-template-columns:1fr;}
+    .split.reverse .split-media{order:-1;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:760px){
+    .nav-links,.nav-cta{display:none;}
+    .nav-toggle{display:flex;}
+    .footer-grid{grid-template-columns:1fr;}
+    .topbar .wrap{font-size:.72rem;}
+  }
+  @media (prefers-reduced-motion:reduce){ *{transition:none !important;} }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400..600;1,500..600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+
+<svg style="display:none">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1v3.4c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4.9c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.3 1.1l-2.2 2.3Z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3.5 5.5h17v13h-17z"/><path d="m3.5 6 8.5 7 8.5-7"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 10 10"><path d="M1.5 3.5 5 7l3.5-3.5"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15 9-4.5 2-1.5 4.5 4.5-2Z"/></symbol>
+  <symbol id="i-house" viewBox="0 0 24 24"><path d="m3.5 11 8.5-7 8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-6h4v6"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.4 2.6 3.6 5.7 3.6 9s-1.2 6.4-3.6 9c-2.4-2.6-3.6-5.7-3.6-9s1.2-6.4 3.6-9Z"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6Z"/><path d="M15 3v4h4M9 12h7M9 16h7M9 8h3"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.6-5.9M20 4v5h-5"/></symbol>
+  <symbol id="i-people" viewBox="0 0 24 24"><circle cx="8.5" cy="8" r="3"/><circle cx="16.5" cy="9.5" r="2.3"/><path d="M2.5 20c.6-3.4 3-5.5 6-5.5s5.4 2.1 6 5.5M14.8 14.8c2.3.3 4 2.1 4.5 5.2"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4.5 6v6c0 4.6 3.2 7.9 7.5 9 4.3-1.1 7.5-4.4 7.5-9V6Z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="1.5"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></symbol>
+  <symbol id="i-graduate" viewBox="0 0 24 24"><path d="m2 9 10-4.5L22 9l-10 4.5Z"/><path d="M6 11v5c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5 9 17l11-11"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14 21v-7h2.4l.4-3H14V9c0-.9.2-1.5 1.6-1.5H17V5c-.3 0-1.2-.1-2.3-.1-2.3 0-3.7 1.4-3.7 3.9V11H8.5v3H11v7Z"/></symbol>
+  <symbol id="i-in" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M7.5 10v6.5M7.5 7.2v.1M12 16.5V13c0-1.4.9-2.4 2.2-2.4 1.3 0 2 .9 2 2.4v3.5"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1"/></symbol>
+</svg>
+
+<a class="visually-hidden" href="#main">Aller au contenu principal</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-left">
+      <a href="tel:+15149783210"><svg class="topbar-icon"><use href="#i-phone"/></svg> 514&nbsp;978&nbsp;3210</a>
+      <a href="mailto:info@boldeaimmigration.com"><svg class="topbar-icon"><use href="#i-mail"/></svg> info@boldeaimmigration.com</a>
+      <span style="display:flex;align-items:center;gap:.4rem;opacity:.85;"><svg class="topbar-icon"><use href="#i-pin"/></svg> Montréal, QC</span>
+    </div>
+    <div class="topbar-right">
+      <div class="lang-switch">
+        <a href="./">EN</a>
+        <span aria-hidden="true">/</span>
+        <a href="index-fr.html" aria-current="true">FR</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="mainnav" id="mainnav">
+  <div class="wrap">
+    <a class="brand" href="index-fr.html">
+      <span class="brand-mark">B</span>
+      <span class="brand-text"><strong>Boldea Immigration</strong><span>CRIC · Montréal</span></span>
+    </a>
+
+    <div class="nav-links">
+      <div class="nav-item is-open is-active" data-nav>
+        <button type="button" class="nav-top" aria-expanded="true">Pour les particuliers <svg class="chev" viewBox="0 0 10 10"><use href="#i-chev"/></svg></button>
+        <div class="mega">
+          <a href="immigration-quebec-canada.html"><svg class="mega-icon"><use href="#i-compass"/></svg><span><span class="mega-label">Immigration Québec-Canada</span><span class="mega-desc">Comprendre les deux processus de sélection</span></span></a>
+          <a class="is-current" href="peq.html"><svg class="mega-icon"><use href="#i-house"/></svg><span><span class="mega-label">PEQ</span><span class="mega-desc">Programme de l'Expérience Québécoise</span></span></a>
+          <a href="entree-express.html"><svg class="mega-icon"><use href="#i-doc"/></svg><span><span class="mega-label">Entrée express</span><span class="mega-desc">Résidence permanente pour le reste du Canada</span></span></a>
+          <a href="etudier-au-canada.html"><svg class="mega-icon"><use href="#i-graduate"/></svg><span><span class="mega-label">Étudier au Canada</span><span class="mega-desc">Permis d'études et permis de travail post-diplôme</span></span></a>
+        </div>
+      </div>
+      <div class="nav-item" data-nav>
+        <button type="button" class="nav-top" aria-expanded="false">Pour les employeurs <svg class="chev" viewBox="0 0 10 10"><use href="#i-chev"/></svg></button>
+        <div class="mega">
+          <a href="embaucher-un-travailleur-etranger.html"><svg class="mega-icon"><use href="#i-people"/></svg><span><span class="mega-label">Embaucher un travailleur étranger</span><span class="mega-desc">EIMT et recrutement de candidats</span></span></a>
+          <a href="entreprises.html"><svg class="mega-icon"><use href="#i-globe"/></svg><span><span class="mega-label">Tous nos services</span><span class="mega-desc">EIMT, recrutement, conformité, rétention</span></span></a>
+          <a href="entreprises.html#audits"><svg class="mega-icon"><use href="#i-shield"/></svg><span><span class="mega-label">Audits de conformité</span><span class="mega-desc">Restez conforme aux règles d'IRCC et d'EDSC</span></span></a>
+          <a href="entreprises.html#retention"><svg class="mega-icon"><use href="#i-briefcase"/></svg><span><span class="mega-label">Rétention des travailleurs</span><span class="mega-desc">De temporaire à permanent</span></span></a>
+        </div>
+      </div>
+      <a href="index-fr.html#why">À propos</a>
+      <a href="index-fr.html#stories">Ressources</a>
+    </div>
+
+    <a class="nav-cta" href="https://www.boldeaimmigration.com/service-page/initial-consultation-canada-immigration">Réservez une consultation</a>
+    <button class="nav-toggle" type="button" aria-label="Ouvrir le menu"><svg><use href="#i-menu"/></svg></button>
+  </div>
+</nav>
+
+<main id="main">
+  <nav class="breadcrumb prose-wrap" aria-label="Fil d'Ariane">
+    <ol>
+      <li><a href="index-fr.html">Accueil</a></li>
+      <li aria-hidden="true"><svg viewBox="0 0 10 10"><use href="#i-chev"/></svg></li>
+      <li><a href="peq.html">PEQ</a></li>
+      <li aria-hidden="true"><svg viewBox="0 0 10 10"><use href="#i-chev"/></svg></li>
+      <li aria-current="page">Consultation</li>
+    </ol>
+  </nav>
+
+  <!-- HERO -->
+  <section class="cms-hero">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <span class="eyebrow">PEQ · Consultation</span>
+          <h1 style="margin-top:.6rem;">Bienvenue dans mon cabinet de conseil en immigration.</h1>
+          <div class="cms-richtext" style="margin-top:1rem;max-width:60ch;">
+            <p>Pour des questions aussi importantes que votre avenir au Québec, il est essentiel de ne pas vous fier aux opinions trouvées sur Facebook et Google. Le délai pour présenter une demande de PEQ est court. Nous sommes formés et autorisés à vous conseiller en fonction de votre situation particulière. Notre cabinet de consultation réglementé assure un traitement précis et professionnel de votre demande de PEQ, que ce soit par vous ou par nous. Prenez rendez-vous dès aujourd'hui pour parler directement avec un professionnel.</p>
+          </div>
+          <div class="service-actions">
+            <a class="btn-solid" href="https://www.boldeaimmigration.com/service-page/initial-consultation-canada-immigration">Réservez une consultation</a>
+          </div>
+        </div>
+        <div class="split-media"><div class="photo-frame"><span class="cap">Consultation</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHT CALLOUT -->
+  <section class="cms-block">
+    <div class="wrap">
+      <div class="split reverse">
+        <div class="split-media"><div class="photo-frame"><span class="cap">Stratégie PEQ</span></div></div>
+        <div class="highlight">
+          <p>Vous avez des doutes concernant les mises à jour du PEQ au Québec ? Obtenez votre CSQ grâce à une stratégie infaillible.</p>
+          <p>Une consultation en immigration de 50 minutes avec nous vous permettra d'être parfaitement préparé.</p>
+          <a class="btn-solid" href="https://www.boldeaimmigration.com/service-page/initial-consultation-canada-immigration">Réservez une consultation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW THE INITIAL CONSULTATION WORKS -->
+  <section class="cms-block">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <div class="section-head">
+            <span class="eyebrow">Le déroulement</span>
+            <h2>Comment se passe votre consultation initiale ?</h2>
+          </div>
+          <div class="volets-numbered">
+            <div class="volet-num">
+              <div class="volet-num-badge">1</div>
+              <div class="volet-num-body">
+                <h3>Réservez votre consultation initiale</h3>
+                <p>Cliquez sur le bouton vert pour choisir votre créneau de consultation et régler le coût de l'analyse détaillée de votre dossier. La consultation coûte 275 $ taxes incluses. Une fois votre rendez-vous confirmé, vous recevrez une demande de documents. Nous vous demanderons de fournir toutes les preuves et les documents généralement requis. Nous examinerons ensuite votre dossier et évaluerons votre situation. Nous pourrions vous demander des informations complémentaires si nécessaire. Vous recevrez un contrat succinct qui vous protège en tant que consommateur.</p>
+              </div>
+            </div>
+            <div class="volet-num">
+              <div class="volet-num-badge">2</div>
+              <div class="volet-num-body">
+                <h3>Analyse, stratégie et planification</h3>
+                <p>Nous commençons par évaluer votre situation et vos objectifs afin de déterminer les points forts et les points faibles de votre dossier selon les critères du Programme de l'Expérience Québécoise (PEQ). Nous vous fournirons ensuite des conseils personnalisés sur le moment et la façon de présenter votre demande de CSQ, en fonction des renseignements que vous nous aurez communiqués. Nous analyserons les atouts et les faiblesses de votre dossier, trouverons des solutions pour gérer les risques et élaborerons un plan pour votre demande.</p>
+              </div>
+            </div>
+            <div class="volet-num">
+              <div class="volet-num-badge">3</div>
+              <div class="volet-num-body">
+                <h3>La consultation de 50 minutes</h3>
+                <p>Lors de notre rendez-vous, nous vous présentons notre stratégie et nos conseils, adaptés à votre situation particulière. Nous passons en revue vos documents et vous expliquons la procédure de demande. Si possible, nous vous indiquons vos chances d'obtenir une réponse positive et les risques à maîtriser. Si vous souhaitez nous confier la gestion de votre demande, le prix de la consultation sera déduit du prix de notre prestation de représentation.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="split-media"><div class="photo-frame"><span class="cap">Analyse de dossier</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section class="cms-block">
+    <div class="wrap">
+      <div class="split reverse">
+        <div class="split-media"><div class="photo-frame"><span class="cap">Notre cabinet</span></div></div>
+        <div>
+          <div class="section-head">
+            <span class="eyebrow">Notre cabinet</span>
+            <h2>Expertise en immigration canadienne</h2>
+          </div>
+          <div class="cms-richtext">
+            <p>Nous sommes un cabinet de conseil en immigration agréé, spécialisé dans l'accompagnement des personnes confrontées aux complexités de l'immigration canadienne. Notre rôle est de nous tenir informés des évolutions réglementaires et de vous conseiller avec rigueur et précision. Notre équipe allie une connaissance approfondie de la réglementation à une approche personnalisée pour garantir le succès et la fluidité de votre parcours.</p>
+          </div>
+          <h3 style="font-size:1rem;margin-top:1.4rem;">Titres de compétences réglementés</h3>
+          <ul class="checklist">
+            <li><svg><use href="#i-check"/></svg> Réglementé par le Collège des consultants en immigration du Canada (R731311)</li>
+            <li><svg><use href="#i-check"/></svg> Accrédité par MIFI (12219)</li>
+            <li><svg><use href="#i-check"/></svg> Expertise en matière de programmes d'immigration fédéraux et provinciaux</li>
+            <li><svg><use href="#i-check"/></svg> Engagés pour la réussite de nos clients et la conformité réglementaire</li>
+          </ul>
+          <div class="service-actions">
+            <a class="btn-solid" href="https://www.boldeaimmigration.com/service-page/initial-consultation-canada-immigration">Réservez une consultation</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENT STORIES -->
+  <section class="cms-block">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Témoignages</span>
+        <h2>Parcours clients avec Angela Boldea Immigration Inc.</h2>
+      </div>
+      <div class="case-grid">
+        <div class="case-card">
+          <div class="photo-frame"><span class="cap">Dossier client</span></div>
+          <div class="case-body">
+            <h3>Madame B et Monsieur D renversent l'intention de refus.</h3>
+            <p>Madame B et Monsieur D résidaient au Québec depuis plus de deux ans. Pendant que Madame B était étudiante, Monsieur D travaillait comme technicien comptable (code CNP TEER 12200). Lors de leur demande d'immigration au Québec, ils ont reçu une lettre d'intention de refus, l'agent estimant que Monsieur D ne possédait pas les qualifications requises pour le poste et n'assumait pas la majorité des fonctions décrites dans le code CNP. Nous avons fourni à Monsieur D les détails et les arguments nécessaires pour répondre à l'agent. Grâce à cette lettre, la décision a été annulée et la famille a obtenu son CSQ.</p>
+            <a class="btn-solid" href="https://www.boldeaimmigration.com/service-page/initial-consultation-canada-immigration">Réservez une consultation</a>
+            <div class="case-links">
+              <a href="#">Apprenez-en davantage sur le service</a>
+              <a href="peq.html">Apprenez-en davantage sur le PEQ</a>
+            </div>
+          </div>
+        </div>
+        <div class="case-card">
+          <div class="photo-frame"><span class="cap">Dossier client</span></div>
+          <div class="case-body">
+            <h3>Monsieur P a obtenu son CSQ avec un diplôme de l'Ontario et une expérience de travail au Québec.</h3>
+            <p>Monsieur P. avait étudié les technologies de l'information en Ontario. Après l'obtention de son diplôme, il a trouvé un emploi au Québec grâce à son permis de travail postdiplôme (PTPD). Nous l'avons accompagné dans sa demande d'immigration au Programme des travailleurs qualifiés du Québec (PTQ) par le biais de notre service de coaching. Nous lui avons expliqué quels documents il devait fournir, comment démontrer qu'il remplissait toutes les responsabilités liées à ce code CNP et comment rédiger sa lettre de présentation. Il a obtenu son CSQ.</p>
+            <a class="btn-solid" href="https://www.boldeaimmigration.com/service-page/initial-consultation-canada-immigration">Réservez une consultation</a>
+            <div class="case-links">
+              <a href="#">Apprenez-en davantage sur le service</a>
+              <a href="peq.html">Apprenez-en davantage sur le PEQ</a>
+            </div>
+          </div>
+        </div>
+        <div class="case-card">
+          <div class="photo-frame"><span class="cap">Dossier client</span></div>
+          <div class="case-body">
+            <h3>Mlle S nous a demandé de gérer sa demande et elle a obtenu son statut de résidente permanente.</h3>
+            <p>Mlle S. doutait de sa capacité à gérer la multitude d'étapes et de documents nécessaires pour obtenir son permis de séjour permanent au Canada. Nous avons pris en charge ses démarches de A à Z. Nous avons élaboré sa stratégie, établi un plan pour les tests et les justificatifs à fournir, rempli toutes les conditions requises, organisé son dossier pour un examen rapide par l'agent et répondu à toutes les demandes de renseignements complémentaires. Elle a obtenu sa résidence permanente avant ses vacances prévues.</p>
+            <a class="btn-solid" href="https://www.boldeaimmigration.com/service-page/initial-consultation-canada-immigration">Réservez une consultation</a>
+            <div class="case-links">
+              <a href="#">Apprenez-en davantage sur le service</a>
+              <a href="peq.html">Apprenez-en davantage sur le PEQ</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REPRESENTATION PROCESS -->
+  <section class="cms-block">
+    <div class="wrap">
+      <div class="split reverse">
+        <div class="split-media"><div class="photo-frame"><span class="cap">Représentation complète</span></div></div>
+        <div>
+          <div class="section-head">
+            <span class="eyebrow">Représentation complète</span>
+            <h2>Processus des services de représentation.</h2>
+          </div>
+          <div class="service-actions" style="margin-bottom:1.4rem;">
+            <a class="btn-solid" href="https://www.boldeaimmigration.com/service-page/initial-consultation-canada-immigration">Réservez une consultation</a>
+          </div>
+          <div class="volets-numbered">
+            <div class="volet-num">
+              <div class="volet-num-badge">1</div>
+              <div class="volet-num-body">
+                <h3>Consultation initiale</h3>
+                <p>Nous commençons par évaluer votre situation et vos objectifs afin de déterminer votre admissibilité au Programme du Québec (PQ). Pour ce faire, vous réservez et payez une évaluation de 50 minutes au coût de 275 $ (non remboursable). Si vous êtes admissible et que vous acceptez nos services, nous passons ensemble à l'étape suivante : la préparation de votre demande. Le coût de la consultation est déduit des frais de représentation.</p>
+              </div>
+            </div>
+            <div class="volet-num">
+              <div class="volet-num-badge">2</div>
+              <div class="volet-num-body">
+                <h3>Stratégie et planification</h3>
+                <p>Nos consultants élaborent une feuille de route détaillée décrivant la documentation nécessaire, les échéanciers et les exigences particulières de votre demande.</p>
+              </div>
+            </div>
+            <div class="volet-num">
+              <div class="volet-num-badge">3</div>
+              <div class="volet-num-body">
+                <h3>Soumission de la candidature</h3>
+                <p>Nous préparons et soumettons votre demande au MIFI, en veillant à ce que tous les formulaires soient remplis avec exactitude et que toutes les pièces justificatives soient correctement organisées. Une fois le CSQ obtenu, nous soumettons votre demande de résidence permanente à IRCC.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COACHING PROCESS -->
+  <section class="cms-block">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <div class="section-head">
+            <span class="eyebrow">Coaching</span>
+            <h2>Coaching en matière d'immigration pour la gestion de votre propre demande.</h2>
+          </div>
+          <div class="service-actions" style="margin-bottom:1.4rem;">
+            <a class="btn-solid" href="https://www.boldeaimmigration.com/service-page/initial-consultation-canada-immigration">Réservez une consultation</a>
+          </div>
+          <div class="volets-numbered">
+            <div class="volet-num">
+              <div class="volet-num-badge">1</div>
+              <div class="volet-num-body">
+                <h3>Consultation initiale</h3>
+                <p>Lorsque vous réservez un service de coaching, nous commençons par évaluer votre situation et vos objectifs afin de déterminer les points forts et les points faibles de votre dossier selon les critères du Programme de l'Expérience Québécoise (PEQ). Pour ce faire, nous examinons tous les documents et justificatifs que vous prévoyez d'utiliser dans votre demande.</p>
+              </div>
+            </div>
+            <div class="volet-num">
+              <div class="volet-num-badge">2</div>
+              <div class="volet-num-body">
+                <h3>Stratégie et planification</h3>
+                <p>Nous vous conseillons sur les documents et justificatifs à fournir en fonction de votre situation particulière. Le cas échéant, nous vous indiquons comment pallier les faiblesses de votre dossier. Grâce à ces informations, vous complétez votre profil Arrima et préparez votre dossier de demande.</p>
+              </div>
+            </div>
+            <div class="volet-num">
+              <div class="volet-num-badge">3</div>
+              <div class="volet-num-body">
+                <h3>Soumission de la candidature</h3>
+                <p>Avant de déposer votre candidature, nous passons en revue avec vous votre profil Arrima ainsi que la liste des justificatifs et documents à fournir. Vous êtes ainsi prêt(e) à soumettre votre dossier en toute confiance.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="split-media"><div class="photo-frame"><span class="cap">Coaching</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA banner -->
+  <section class="cta-wrap">
+    <div class="wrap">
+      <div class="cta-banner">
+        <div>
+          <h2>Prêt à faire le premier pas ?</h2>
+          <p>Réservez votre consultation de 50 minutes et repartez avec une stratégie claire pour votre PEQ.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="btn-light" href="https://www.boldeaimmigration.com/service-page/initial-consultation-canada-immigration">Réservez une consultation</a>
+          <a class="btn-ghost" href="peq.html">Voir les critères du PEQ</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index-fr.html" style="margin:0;">
+          <span class="brand-mark" style="border-color:#e6cdb6;color:#e6cdb6;">B</span>
+          <span class="brand-text"><strong style="color:#f1e4d8;">Boldea Immigration</strong><span style="color:#c99a72;">CRIC · Montréal</span></span>
+        </a>
+        <p>Un accompagnement réglementé en immigration canadienne pour les particuliers et les employeurs, par une équipe qui a elle aussi vécu ce parcours.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Facebook"><svg><use href="#i-fb"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg><use href="#i-in"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Particuliers</h4>
+        <ul>
+          <li><a href="immigration-quebec-canada.html">Immigration Québec-Canada</a></li>
+          <li><a href="peq.html">PEQ</a></li>
+          <li><a href="entree-express.html">Entrée express</a></li>
+          <li><a href="etudier-au-canada.html">Étudier au Canada</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Employeurs</h4>
+        <ul>
+          <li><a href="embaucher-un-travailleur-etranger.html">Embaucher un travailleur étranger</a></li>
+          <li><a href="entreprises.html">Tous nos services</a></li>
+          <li><a href="entreprises.html#audits">Audits de conformité</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Entreprise</h4>
+        <ul>
+          <li><a href="index-fr.html#why">À propos d'Angela</a></li>
+          <li><a href="index-fr.html#why">Pourquoi un CRIC</a></li>
+          <li><a href="index-fr.html#stories">Témoignages de clients</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul class="footer-contact">
+          <li><svg><use href="#i-pin"/></svg> Montréal, Québec, Canada</li>
+          <li><svg><use href="#i-phone"/></svg> 514 978 3210</li>
+          <li><svg><use href="#i-mail"/></svg> info@boldeaimmigration.com</li>
+        </ul>
+        <div class="accred-row">
+          <span class="accred-badge">MEMBRE DU CCIC</span>
+          <span class="accred-badge">AGRÉÉE CRIC</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Angela Boldea Immigration Inc. Tous droits réservés.</span>
+      <div class="legal-links">
+        <a href="#">Politique de confidentialité</a>
+        <a href="#">Conditions d'utilisation</a>
+        <a href="#">Plan du site</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var nav = document.getElementById('mainnav');
+    window.addEventListener('scroll', function(){
+      nav.classList.toggle('is-scrolled', window.scrollY > 8);
+    }, { passive: true });
+    document.querySelectorAll('[data-nav]').forEach(function(item){
+      var btn = item.querySelector('button.nav-top');
+      btn.addEventListener('click', function(){
+        var open = item.classList.contains('is-open');
+        document.querySelectorAll('[data-nav]').forEach(function(i){ i.classList.remove('is-open'); i.querySelector('button.nav-top').setAttribute('aria-expanded','false'); });
+        if(!open){ item.classList.add('is-open'); btn.setAttribute('aria-expanded','true'); }
+      });
+    });
+    document.addEventListener('click', function(e){
+      if(!e.target.closest('[data-nav]')){
+        document.querySelectorAll('[data-nav]').forEach(function(i){ i.classList.remove('is-open'); i.querySelector('button.nav-top').setAttribute('aria-expanded','false'); });
+      }
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){
+        document.querySelectorAll('[data-nav]').forEach(function(i){ i.classList.remove('is-open'); i.querySelector('button.nav-top').setAttribute('aria-expanded','false'); });
+      }
+    });
+  })();
+</script>
