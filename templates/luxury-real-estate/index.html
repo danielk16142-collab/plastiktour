@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thornbury &amp; Hale | Distinguished Homes</title>
+<meta name="description" content="A heritage inspired luxury real estate template. Fully self contained, one file, ready to rebrand for any agency.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* =====================================================================
+   REBRAND GUIDE — read this first
+   =====================================================================
+   Everything a new client needs lives in the :root block directly below.
+   To reskin this template for a different agency, change these in order:
+
+   1. COLORS
+      --color-primary    the deep accent color (buttons, links, borders)
+      --color-secondary  the warm secondary/metallic accent (hover states,
+                          thin dividers, small details)
+      --color-bg         the main background (warm neutral / cream)
+      --color-text       the primary text color (charcoal / near black)
+
+   2. TYPE
+      --font-heading     serif display font for all headlines
+      --font-body        sans serif font for body copy and UI
+      (If you change fonts, also update the Google Fonts <link> above.)
+
+   3. IDENTITY
+      --agency-name      appears in the nav logo and footer automatically
+                          via CSS, driven by these two variables — no need
+                          to hunt through the HTML for the name.
+      --agency-tagline   appears under the agency name in the footer.
+
+   4. TEXT TO REPLACE BY HAND (search the HTML body for these):
+      - The <title> tag and meta description at the top of <head>.
+      - The hero headline and subheadline ("Find Your Dream Home...").
+      - The "Our Story" paragraphs (currently written for a fictional
+        brokerage called Thornbury & Hale — replace with the real
+        agency's history and voice).
+      - The 6 property cards under "Featured Listings" (photos, prices,
+        addresses, beds/baths/sqft — replace with real or client supplied
+        listings).
+      - The 3 neighbourhood cards under "Search by Area".
+      - The "When You Want the World" paragraph.
+      - The 3 article cards under "Insights".
+      - The careers banner headline and CTA button text.
+      - Footer quick links, social links, contact details, the copyright
+        line, and the brokerage disclaimer line (this is a legal
+        placeholder — every real brokerage needs its own compliant
+        disclaimer text here). The agency name in the footer heading and
+        tagline line is pulled from --agency-name / --agency-tagline
+        automatically, but the copyright line and the nav logo's
+        aria-label are plain text and need a manual find and replace.
+
+   5. IMAGES
+      All photos are placeholder Unsplash URLs. Swap the src attribute on
+      each <img> for the client's real photography. Keep the alt text
+      pattern (a plain description of what the photo shows) for
+      accessibility, and update it to match the new image.
+   ===================================================================== */
+
+:root {
+  /* ---- 1. Brand colors ---- */
+  --color-primary: #1b2a41;      /* deep navy accent — CTAs, links, active states */
+  --color-secondary: #a9814f;    /* warm brass accent — hovers, dividers, details */
+  --color-bg: #faf6f0;           /* warm cream background */
+  --color-text: #262220;         /* charcoal body/heading text */
+
+  /* ---- derived neutrals (rarely need to change) ---- */
+  --color-bg-alt: #f1ebe0;
+  --color-white: #ffffff;
+  --color-text-muted: #6b6259;
+  --color-border: rgba(38, 34, 32, 0.12);
+  --color-overlay: rgba(20, 18, 16, 0.45);
+
+  /* ---- 2. Typography ---- */
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* ---- 3. Identity ---- */
+  --agency-name: "Thornbury & Hale";
+  --agency-tagline: "Distinguished Homes. Trusted Guidance.";
+
+  /* ---- layout ---- */
+  --max-width: 1280px;
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul { list-style: none; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  margin-bottom: 16px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 16px 36px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  border: 1px solid var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-white);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.btn:hover, .btn:focus-visible {
+  background: transparent;
+  color: var(--color-primary);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.btn-outline:hover, .btn-outline:focus-visible {
+  background: var(--color-white);
+  color: var(--color-text);
+}
+
+/* ---- reveal on scroll ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================
+   NAV
+   ========================================= */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 26px 0;
+  transition: background var(--transition), padding var(--transition), box-shadow var(--transition);
+}
+
+.site-header .nav-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-header.scrolled {
+  background: rgba(250, 246, 240, 0.96);
+  padding: 14px 0;
+  box-shadow: 0 1px 0 var(--color-border);
+  backdrop-filter: saturate(180%) blur(8px);
+}
+
+.nav-logo {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-white);
+  transition: color var(--transition);
+}
+
+.nav-logo::before {
+  content: var(--agency-name);
+}
+
+.site-header.scrolled .nav-logo {
+  color: var(--color-primary);
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+}
+
+.nav-links a {
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-white);
+  position: relative;
+  padding-bottom: 4px;
+  transition: color var(--transition);
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-secondary);
+  transition: width var(--transition);
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus-visible::after {
+  width: 100%;
+}
+
+.site-header.scrolled .nav-links a {
+  color: var(--color-text);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1100;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--color-white);
+  transition: background var(--transition), transform var(--transition), opacity var(--transition);
+}
+
+.site-header.scrolled .nav-toggle span,
+.nav-toggle.is-open span {
+  background: var(--color-text);
+}
+
+.nav-toggle.is-open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.nav-toggle.is-open span:nth-child(2) { opacity: 0; }
+.nav-toggle.is-open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* =========================================
+   HERO
+   ========================================= */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 640px;
+  display: flex;
+  align-items: flex-end;
+  color: var(--color-white);
+}
+
+.hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20,18,16,0.35) 0%, rgba(20,18,16,0.15) 40%, rgba(20,18,16,0.75) 100%);
+}
+
+.hero-content {
+  position: relative;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 32px 96px;
+  width: 100%;
+}
+
+.hero-content h1 {
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  max-width: 14ch;
+  margin-bottom: 20px;
+}
+
+.hero-sub {
+  font-size: 1.15rem;
+  font-weight: 300;
+  max-width: 42ch;
+  margin-bottom: 40px;
+  color: rgba(255,255,255,0.92);
+}
+
+.hero-search {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 14px;
+  max-width: 640px;
+}
+
+.hero-search input,
+.hero-search select {
+  flex: 1 1 180px;
+  border: none;
+  background: transparent;
+  padding: 12px 14px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  border-right: 1px solid var(--color-border);
+}
+
+.hero-search select { flex: 1 1 140px; cursor: pointer; }
+
+.hero-search input:focus,
+.hero-search select:focus {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: -2px;
+}
+
+.hero-search button {
+  flex: 0 0 auto;
+  border: none;
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 12px 30px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.hero-search button:hover { background: var(--color-secondary); }
+
+/* =========================================
+   SECTION SPACING
+   ========================================= */
+section {
+  padding: 120px 0;
+}
+
+.section-heading {
+  max-width: 640px;
+  margin-bottom: 64px;
+}
+
+.section-heading h2 {
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+}
+
+.section-heading.center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* =========================================
+   OUR STORY
+   ========================================= */
+.story {
+  background: var(--color-bg);
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.story-text h2 {
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+  margin-bottom: 24px;
+}
+
+.story-text p {
+  color: var(--color-text-muted);
+  margin-bottom: 18px;
+  font-size: 1.02rem;
+}
+
+.story-text p:last-of-type { margin-bottom: 0; }
+
+.story-media img {
+  width: 100%;
+  height: 560px;
+  object-fit: cover;
+}
+
+/* =========================================
+   FEATURED LISTINGS
+   ========================================= */
+.listings {
+  background: var(--color-bg-alt);
+}
+
+.listings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.listing-card {
+  background: var(--color-white);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.listing-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px -24px rgba(27, 42, 65, 0.35);
+}
+
+.listing-photo {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.listing-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.listing-card:hover .listing-photo img {
+  transform: scale(1.06);
+}
+
+.listing-price {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 8px 16px;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+}
+
+.listing-body {
+  padding: 28px;
+}
+
+.listing-address {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+
+.listing-location {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 18px;
+}
+
+.listing-stats {
+  display: flex;
+  gap: 18px;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  border-top: 1px solid var(--color-border);
+  padding-top: 16px;
+  margin-bottom: 22px;
+}
+
+.listing-stats strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.listing-view {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+  border-bottom: 1px solid var(--color-primary);
+  padding-bottom: 3px;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.listing-view:hover {
+  color: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+
+/* =========================================
+   SEARCH BY AREA
+   ========================================= */
+.areas {
+  background: var(--color-bg);
+}
+
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.area-card {
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+  cursor: pointer;
+  display: block;
+}
+
+.area-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.area-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20,18,16,0) 40%, rgba(20,18,16,0.75) 100%);
+}
+
+.area-card:hover img { transform: scale(1.08); }
+
+.area-label {
+  position: absolute;
+  bottom: 28px;
+  left: 28px;
+  z-index: 2;
+  color: var(--color-white);
+}
+
+.area-label h3 {
+  font-size: 1.5rem;
+  margin-bottom: 6px;
+}
+
+.area-label span {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-secondary);
+}
+
+/* =========================================
+   GLOBAL REACH
+   ========================================= */
+.global-reach {
+  position: relative;
+  min-height: 640px;
+  display: flex;
+  align-items: center;
+  color: var(--color-white);
+  padding: 0;
+}
+
+.global-reach img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.global-reach::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-overlay);
+  z-index: -1;
+}
+
+.global-reach-content {
+  max-width: 620px;
+  padding: 0 32px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.global-reach-content .eyebrow { color: var(--color-white); opacity: 0.85; }
+
+.global-reach-content h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 24px;
+}
+
+.global-reach-content p {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.92);
+}
+
+/* =========================================
+   INSIGHTS
+   ========================================= */
+.insights {
+  background: var(--color-bg-alt);
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.article-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  margin-bottom: 24px;
+}
+
+.article-date {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-secondary);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.article-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
+
+.article-card p {
+  color: var(--color-text-muted);
+  font-size: 0.96rem;
+  margin-bottom: 16px;
+}
+
+.article-link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+  border-bottom: 1px solid var(--color-primary);
+  padding-bottom: 3px;
+}
+
+/* =========================================
+   CAREERS BANNER
+   ========================================= */
+.careers {
+  position: relative;
+  min-height: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--color-white);
+}
+
+.careers img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.careers::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 18, 16, 0.6);
+  z-index: -1;
+}
+
+.careers-content { max-width: 560px; padding: 0 32px; }
+
+.careers-content .eyebrow { color: var(--color-secondary); }
+
+.careers-content h2 {
+  font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+  margin-bottom: 20px;
+}
+
+.careers-content p {
+  font-weight: 300;
+  font-size: 1.05rem;
+  margin-bottom: 32px;
+  color: rgba(255,255,255,0.92);
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.site-footer {
+  background: var(--color-text);
+  color: rgba(255,255,255,0.85);
+  padding: 88px 0 32px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid rgba(255,255,255,0.14);
+  margin-bottom: 32px;
+}
+
+.footer-brand h3 {
+  font-family: var(--font-heading);
+  color: var(--color-white);
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.footer-brand h3::before {
+  content: var(--agency-name);
+}
+
+.footer-brand p::before {
+  content: var(--agency-tagline);
+}
+
+.footer-brand p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.65);
+  max-width: 32ch;
+}
+
+.footer-col h4 {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-white);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.footer-col ul li {
+  margin-bottom: 12px;
+}
+
+.footer-col a {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.75);
+  transition: color var(--transition);
+}
+
+.footer-col a:hover { color: var(--color-secondary); }
+
+.footer-socials {
+  display: flex;
+  gap: 14px;
+}
+
+.footer-socials a {
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.footer-socials a:hover {
+  background: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+
+.footer-socials svg { width: 16px; height: 16px; fill: currentColor; }
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.55);
+}
+
+.footer-bottom .legal-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-disclaimer {
+  max-width: 900px;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 1024px) {
+  .listings-grid,
+  .areas-grid,
+  .insights-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+
+  .story-grid { gap: 48px; }
+}
+
+@media (max-width: 860px) {
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(320px, 80vw);
+    background: var(--color-bg);
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 0 48px;
+    transform: translateX(100%);
+    transition: transform var(--transition);
+    box-shadow: -8px 0 30px rgba(0,0,0,0.15);
+  }
+
+  .nav-links.is-open { transform: translateX(0); }
+
+  .nav-links a { color: var(--color-text); font-size: 1rem; }
+
+  .nav-toggle { display: flex; }
+
+  .story-grid { grid-template-columns: 1fr; }
+
+  .story-media img { height: 360px; }
+}
+
+@media (max-width: 640px) {
+  section { padding: 80px 0; }
+
+  .container, .nav-container, .hero-content, .story-grid { padding-left: 20px; padding-right: 20px; }
+
+  .listings-grid,
+  .areas-grid,
+  .insights-grid { grid-template-columns: 1fr; }
+
+  .hero { min-height: 560px; }
+
+  .hero-content { padding-bottom: 64px; }
+
+  .hero-search { flex-direction: column; }
+
+  .hero-search input,
+  .hero-search select { border-right: none; border-bottom: 1px solid var(--color-border); }
+
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 375px) {
+  .hero-content h1 { font-size: 2.2rem; }
+  .section-heading h2 { font-size: 1.6rem; }
+}
+
+</style>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="nav-container">
+    <a href="#hero" class="nav-logo" aria-label="Thornbury & Hale, back to top"></a>
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
+      <a href="#listings">Buy</a>
+      <a href="#global-reach">Sell</a>
+      <a href="#story">Our Team</a>
+      <a href="#story">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="hero-media">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=80" alt="Grand two story luxury home exterior at dusk with stone facade, manicured lawn, and warm light glowing in every window" loading="eager">
+    </div>
+    <div class="hero-content reveal">
+      <h1>Find Your Dream Home</h1>
+      <p class="hero-sub">Three decades of guiding families to the homes that fit their lives, in the neighbourhoods they have always admired.</p>
+      <form class="hero-search" role="search" onsubmit="return false;">
+        <label for="searchArea" class="visually-hidden" style="position:absolute; width:1px; height:1px; overflow:hidden;">Search by city or neighbourhood</label>
+        <input type="text" id="searchArea" placeholder="City, neighbourhood, or address">
+        <select aria-label="Property type">
+          <option>Any Type</option>
+          <option>Detached Home</option>
+          <option>Condominium</option>
+          <option>Townhome</option>
+          <option>Waterfront</option>
+        </select>
+        <select aria-label="Price range">
+          <option>Any Price</option>
+          <option>$500,000 to $1,000,000</option>
+          <option>$1,000,000 to $2,500,000</option>
+          <option>$2,500,000 and above</option>
+        </select>
+        <button type="submit">Search</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ OUR STORY ============ -->
+  <section class="story" id="story">
+    <div class="story-grid">
+      <div class="story-text reveal">
+        <p class="eyebrow">Our Story</p>
+        <h2>Built on relationships that outlast the sale</h2>
+        <p>Thornbury &amp; Hale was founded in 1987 by two brokers who believed a home sale should feel like a conversation, not a transaction. That belief has never changed. Our agents still walk every property in person before it goes to market, still return calls the same day, and still treat a first time buyer with the same care as a family selling the home they raised three children in.</p>
+        <p>We have worked the same tree lined streets for almost forty years, which means we know which schools are walking distance from which blocks, which renovations add real value, and which homes will sell themselves once the right family walks through the door. Many of our clients today grew up in houses we once sold to their parents, and there is no compliment we take more seriously than that.</p>
+      </div>
+      <div class="story-media reveal">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" alt="Bright, warmly furnished living room in a heritage style home with large windows and natural wood accents">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURED LISTINGS ============ -->
+  <section class="listings" id="listings">
+    <div class="container">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Featured Listings</p>
+        <h2>Homes currently turning heads</h2>
+      </div>
+      <div class="listings-grid">
+
+        <article class="listing-card reveal">
+          <div class="listing-photo">
+            <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=900&q=80" alt="Modern luxury home with clean white facade, large glass windows, and a landscaped front walkway">
+            <span class="listing-price">$2,450,000</span>
+          </div>
+          <div class="listing-body">
+            <h3 class="listing-address">142 Willowmere Lane</h3>
+            <p class="listing-location">Rosedale</p>
+            <div class="listing-stats">
+              <span><strong>5</strong> Beds</span>
+              <span><strong>4.5</strong> Baths</span>
+              <span><strong>4,820</strong> Sqft</span>
+            </div>
+            <a href="#" class="listing-view">View Details</a>
+          </div>
+        </article>
+
+        <article class="listing-card reveal">
+          <div class="listing-photo">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=900&q=80" alt="Contemporary luxury home with pool at twilight, wraparound terrace, and floor to ceiling windows">
+            <span class="listing-price">$3,975,000</span>
+          </div>
+          <div class="listing-body">
+            <h3 class="listing-address">88 Harbourview Crescent</h3>
+            <p class="listing-location">Forest Hill</p>
+            <div class="listing-stats">
+              <span><strong>4</strong> Beds</span>
+              <span><strong>5</strong> Baths</span>
+              <span><strong>5,600</strong> Sqft</span>
+            </div>
+            <a href="#" class="listing-view">View Details</a>
+          </div>
+        </article>
+
+        <article class="listing-card reveal">
+          <div class="listing-photo">
+            <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=900&q=80" alt="Elegant brick townhome with black shutters, a covered porch, and mature trees along the street">
+            <span class="listing-price">$1,895,000</span>
+          </div>
+          <div class="listing-body">
+            <h3 class="listing-address">27 Chesterfield Row</h3>
+            <p class="listing-location">The Kingsway</p>
+            <div class="listing-stats">
+              <span><strong>3</strong> Beds</span>
+              <span><strong>3</strong> Baths</span>
+              <span><strong>3,150</strong> Sqft</span>
+            </div>
+            <a href="#" class="listing-view">View Details</a>
+          </div>
+        </article>
+
+        <article class="listing-card reveal">
+          <div class="listing-photo">
+            <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=900&q=80" alt="Expansive luxury estate home with stone and timber exterior set on a private, tree lined lot">
+            <span class="listing-price">$5,200,000</span>
+          </div>
+          <div class="listing-body">
+            <h3 class="listing-address">615 Rosedale Heights Drive</h3>
+            <p class="listing-location">Rosedale</p>
+            <div class="listing-stats">
+              <span><strong>6</strong> Beds</span>
+              <span><strong>6.5</strong> Baths</span>
+              <span><strong>7,400</strong> Sqft</span>
+            </div>
+            <a href="#" class="listing-view">View Details</a>
+          </div>
+        </article>
+
+        <article class="listing-card reveal">
+          <div class="listing-photo">
+            <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=80" alt="Charming character home with a wraparound porch, garden beds, and warm afternoon light">
+            <span class="listing-price">$1,650,000</span>
+          </div>
+          <div class="listing-body">
+            <h3 class="listing-address">9 Thornwood Court</h3>
+            <p class="listing-location">Forest Hill</p>
+            <div class="listing-stats">
+              <span><strong>4</strong> Beds</span>
+              <span><strong>3</strong> Baths</span>
+              <span><strong>2,980</strong> Sqft</span>
+            </div>
+            <a href="#" class="listing-view">View Details</a>
+          </div>
+        </article>
+
+        <article class="listing-card reveal">
+          <div class="listing-photo">
+            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=80" alt="Sleek modern home with dark wood cladding, minimalist landscaping, and an illuminated entryway at night">
+            <span class="listing-price">$2,890,000</span>
+          </div>
+          <div class="listing-body">
+            <h3 class="listing-address">233 Kingsmill Avenue</h3>
+            <p class="listing-location">The Kingsway</p>
+            <div class="listing-stats">
+              <span><strong>5</strong> Beds</span>
+              <span><strong>4</strong> Baths</span>
+              <span><strong>4,300</strong> Sqft</span>
+            </div>
+            <a href="#" class="listing-view">View Details</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SEARCH BY AREA ============ -->
+  <section class="areas" id="areas">
+    <div class="container">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Search by Area</p>
+        <h2>Neighbourhoods we know by heart</h2>
+      </div>
+      <div class="areas-grid">
+        <a href="#listings" class="area-card reveal">
+          <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=900&q=80" alt="Tree lined residential street in an established, affluent neighbourhood at golden hour">
+          <div class="area-label">
+            <h3>Rosedale</h3>
+            <span>42 Homes Available</span>
+          </div>
+        </a>
+        <a href="#listings" class="area-card reveal">
+          <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=80" alt="Quiet upscale neighbourhood street with large character homes and mature trees">
+          <div class="area-label">
+            <h3>Forest Hill</h3>
+            <span>27 Homes Available</span>
+          </div>
+        </a>
+        <a href="#listings" class="area-card reveal">
+          <img src="https://images.unsplash.com/photo-1465447142348-e9952c393450?auto=format&fit=crop&w=900&q=80" alt="Waterfront neighbourhood at dusk with homes overlooking the water">
+          <div class="area-label">
+            <h3>The Kingsway</h3>
+            <span>19 Homes Available</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHEN YOU WANT THE WORLD ============ -->
+  <section class="global-reach" id="global-reach">
+    <img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=1800&q=80" alt="Aerial view of a coastal city skyline at dusk, suggesting a global network of buyers and markets">
+    <div class="global-reach-content reveal">
+      <p class="eyebrow">When You Want the World</p>
+      <h2>Your home, introduced beyond the neighbourhood</h2>
+      <p>A home like yours does not belong to one city anymore. It belongs to wherever the right buyer happens to be looking, whether that is three blocks away or three time zones away. We place our listings in front of qualified buyers through international print publications, private referral networks, and digital platforms built for discerning searches. When you list with us, your home is presented to the world, not just the street it sits on.</p>
+    </div>
+  </section>
+
+  <!-- ============ INSIGHTS ============ -->
+  <section class="insights" id="insights">
+    <div class="container">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Insights</p>
+        <h2>Notes from the market</h2>
+      </div>
+      <div class="insights-grid">
+        <article class="article-card reveal">
+          <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=700&q=80" alt="Renovated heritage home kitchen blending original woodwork with modern fixtures">
+          <span class="article-date">September 2, 2025</span>
+          <h3>What Buyers Look For in a Heritage Home Renovation</h3>
+          <p>The homes that sell fastest keep their character while quietly solving the problems that come with age. Here is what we tell every seller before they pick up a hammer.</p>
+          <a href="#" class="article-link">Read More</a>
+        </article>
+        <article class="article-card reveal">
+          <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=700&q=80" alt="Beautifully staged living room ready for a real estate photo shoot with natural light">
+          <span class="article-date">August 21, 2025</span>
+          <h3>Preparing Your Property for a Fall Market Debut</h3>
+          <p>Fall buyers move quickly and know what they want. A few weeks of the right preparation can be the difference between a quiet listing and a bidding conversation.</p>
+          <a href="#" class="article-link">Read More</a>
+        </article>
+        <article class="article-card reveal">
+          <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=700&q=80" alt="Family reviewing paperwork together at a wooden table in a bright home office">
+          <span class="article-date">August 5, 2025</span>
+          <h3>Understanding Estate Sales: A Guide for Families</h3>
+          <p>Selling a family home after a loss carries its own weight. We walk families through each step with patience, and a plan that respects what the house has meant.</p>
+          <a href="#" class="article-link">Read More</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CAREERS / JOIN US ============ -->
+  <section class="careers" id="careers">
+    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1800&q=80" alt="Team of real estate professionals reviewing property plans together in a bright office">
+    <div class="careers-content reveal">
+      <p class="eyebrow">Join Our Team</p>
+      <h2>Build a career on craft, not scripts</h2>
+      <p>We are always glad to hear from agents who care more about doing right by a client than hitting a quota. If that sounds like you, we would like to talk.</p>
+      <a href="#contact" class="btn btn-outline">Explore Opportunities</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer" id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3></h3>
+        <p></p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#listings">Buy</a></li>
+          <li><a href="#global-reach">Sell</a></li>
+          <li><a href="#story">Our Team</a></li>
+          <li><a href="#insights">Insights</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+15555550123">(555) 555 0123</a></li>
+          <li><a href="mailto:hello@agencyname.com">hello@agencyname.com</a></li>
+          <li><a href="#">120 Heritage Avenue, Suite 400</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Follow</h4>
+        <div class="footer-socials">
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.25-1.5 1.55-1.5H16.7V3.7C16.4 3.66 15.4 3.57 14.24 3.57c-2.42 0-4.08 1.48-4.08 4.19V9.9H7.44V13h2.72v8h3.34z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 8.4a3.6 3.6 0 1 0 0 7.2 3.6 3.6 0 0 0 0-7.2zM12 2c-2.72 0-3.06.01-4.13.06-1.06.05-1.79.22-2.43.47-.66.26-1.22.6-1.77 1.15-.55.55-.89 1.11-1.15 1.77-.25.64-.42 1.37-.47 2.43C2 8.94 2 9.28 2 12s.01 3.06.06 4.13c.05 1.06.22 1.79.47 2.43.26.66.6 1.22 1.15 1.77.55.55 1.11.89 1.77 1.15.64.25 1.37.42 2.43.47C8.94 22 9.28 22 12 22s3.06-.01 4.13-.06c1.06-.05 1.79-.22 2.43-.47.66-.26 1.22-.6 1.77-1.15.55-.55.89-1.11 1.15-1.77.25-.64.42-1.37.47-2.43.05-1.07.06-1.41.06-4.13s-.01-3.06-.06-4.13c-.05-1.06-.22-1.79-.47-2.43a4.9 4.9 0 0 0-1.15-1.77 4.9 4.9 0 0 0-1.77-1.15c-.64-.25-1.37-.42-2.43-.47C15.06 2.01 14.72 2 12 2z"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5a1.96 1.96 0 1 0 0 3.92 1.96 1.96 0 0 0 0-3.92zM20.45 20h-3.37v-5.6c0-1.34-.03-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V20H9.68V8.5h3.24v1.57h.05c.45-.85 1.55-1.75 3.2-1.75 3.42 0 4.05 2.25 4.05 5.18V20z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <p class="footer-disclaimer">Thornbury &amp; Hale is an independently owned and operated brokerage. All information deemed reliable but not guaranteed. Property listings are subject to prior sale, change, or withdrawal without notice. Equal housing opportunity.</p>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> Thornbury &amp; Hale. All rights reserved.</span>
+      <div class="legal-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var header = document.getElementById('siteHeader');
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+
+  function onScroll() {
+    if (window.scrollY > 40) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  function closeMenu() {
+    navLinks.classList.remove('is-open');
+    navToggle.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Open menu');
+  }
+
+  navToggle.addEventListener('click', function () {
+    var isOpen = navLinks.classList.toggle('is-open');
+    navToggle.classList.toggle('is-open', isOpen);
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+    navToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  });
+
+  navLinks.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
+
+  if ('IntersectionObserver' in window) {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      revealObserver.observe(el);
+    });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      el.classList.add('is-visible');
+    });
+  }
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+})();
+</script>
+
+</body>
+</html>
