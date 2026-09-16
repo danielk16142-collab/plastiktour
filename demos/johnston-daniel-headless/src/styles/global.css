@@ -1,0 +1,164 @@
+/* =====================================================================
+   REBRAND GUIDE
+   =====================================================================
+   Brand variables live in :root below. Change these first to reskin:
+
+   --color-black         primary dark color (backgrounds, headlines, nav)
+   --color-cream         primary light color (page background, reversed text)
+   --color-accent        warm neutral accent (dividers, hover states, tags)
+   --color-text-muted    secondary text color on light backgrounds
+   --font-display        serif headline font
+   --font-body           sans serif body/UI font
+
+   Agency name and tagline are plain text in Nav.astro and Footer.astro
+   (search those files to change them in one place each).
+   ===================================================================== */
+
+:root {
+  --color-black: #141414;
+  --color-cream: #faf8f4;
+  --color-cream-dim: #f0ece3;
+  --color-accent: #b9a37a;
+  --color-text: #141414;
+  --color-text-muted: #5c584f;
+  --color-border: rgba(20, 20, 20, 0.12);
+  --color-border-on-dark: rgba(250, 248, 244, 0.18);
+
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --max-width: 1400px;
+  --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-cream);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: 0.005em;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  margin-bottom: 18px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 17px 38px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  border: 1px solid var(--color-black);
+  background: var(--color-black);
+  color: var(--color-cream);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.btn:hover,
+.btn:focus-visible {
+  background: transparent;
+  color: var(--color-black);
+}
+
+.btn-reversed {
+  border-color: var(--color-cream);
+  background: transparent;
+  color: var(--color-cream);
+}
+
+.btn-reversed:hover,
+.btn-reversed:focus-visible {
+  background: var(--color-cream);
+  color: var(--color-black);
+}
+
+/* scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+section {
+  padding: 120px 0;
+}
+
+@media (max-width: 900px) {
+  section {
+    padding: 80px 0;
+  }
+  .container {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    padding: 64px 0;
+  }
+}

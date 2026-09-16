@@ -1,0 +1,67 @@
+---
+// Round placeholder numbers, formatted the same way the real figures will be.
+const stats = [
+  { value: "45+", label: "Years in Business" },
+  { value: "3,200+", label: "Homes Sold" },
+  { value: "60+", label: "Realtors" },
+  { value: "98%", label: "Client Satisfaction" },
+];
+---
+
+<div class="stat-bar reveal">
+  {
+    stats.map((stat) => (
+      <div class="stat-bar__item">
+        <span class="stat-bar__value">{stat.value}</span>
+        <span class="stat-bar__label">{stat.label}</span>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .stat-bar {
+    background: var(--color-black);
+    color: var(--color-cream);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stat-bar__item {
+    padding: 48px 24px;
+    text-align: center;
+    border-right: 1px solid var(--color-border-on-dark);
+  }
+
+  .stat-bar__item:last-child {
+    border-right: none;
+  }
+
+  .stat-bar__value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    margin-bottom: 8px;
+  }
+
+  .stat-bar__label {
+    display: block;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 700px) {
+    .stat-bar {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .stat-bar__item:nth-child(2) {
+      border-right: none;
+    }
+    .stat-bar__item:nth-child(1),
+    .stat-bar__item:nth-child(2) {
+      border-bottom: 1px solid var(--color-border-on-dark);
+    }
+  }
+</style>

@@ -1,0 +1,104 @@
+---
+import Layout from "../layouts/Layout.astro";
+import TeamCard from "../components/TeamCard.astro";
+import { getTeam } from "../lib/cms";
+
+const team = await getTeam();
+---
+
+<Layout title="Our Team | Johnston & Daniel" description="Meet the advisors of Johnston & Daniel.">
+  <section class="page-banner">
+    <img
+      src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1920&q=80"
+      alt="Team of real estate advisors reviewing property plans together in a bright office"
+      loading="eager"
+    />
+    <div class="page-banner__content reveal">
+      <p class="eyebrow">Our Team</p>
+      <h1>Our Advisors</h1>
+      <p>Every advisor at Johnston &amp; Daniel built their reputation one closing at a time.</p>
+    </div>
+  </section>
+
+  <section class="team-page">
+    <div class="container">
+      <div class="team-page__grid">
+        {
+          team.map((member) => (
+            <div class="reveal">
+              <TeamCard member={member} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-banner {
+    position: relative;
+    height: 52vh;
+    min-height: 380px;
+    display: flex;
+    align-items: flex-end;
+    color: var(--color-cream);
+  }
+
+  .page-banner img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+  }
+
+  .page-banner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(20, 20, 20, 0.4) 0%, rgba(20, 20, 20, 0.15) 40%, rgba(20, 20, 20, 0.85) 100%);
+    z-index: -1;
+  }
+
+  .page-banner__content {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 40px 56px;
+    width: 100%;
+  }
+
+  .page-banner__content h1 {
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    margin-bottom: 14px;
+  }
+
+  .page-banner__content p:not(.eyebrow) {
+    font-size: 1.05rem;
+    color: rgba(250, 248, 244, 0.9);
+    max-width: 48ch;
+  }
+
+  .team-page {
+    background: var(--color-cream);
+  }
+
+  .team-page__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+
+  @media (max-width: 1024px) {
+    .team-page__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .team-page__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

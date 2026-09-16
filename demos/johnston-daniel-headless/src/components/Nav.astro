@@ -1,0 +1,150 @@
+---
+// To rebrand: change the agency name text below and the nav links.
+const links = [
+  { href: "/listings", label: "Buy" },
+  { href: "/listings", label: "Sell" },
+  { href: "/team", label: "Our Team" },
+  { href: "/#about", label: "About" },
+];
+---
+
+<header id="site-nav" class="site-nav">
+  <div class="site-nav__inner">
+    <a href="/" class="site-nav__logo">Johnston &amp; Daniel</a>
+    <nav id="nav-links" class="site-nav__links" aria-label="Primary">
+      {links.map((link) => <a href={link.href}>{link.label}</a>)}
+    </nav>
+    <button
+      id="nav-toggle"
+      class="site-nav__toggle"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="nav-links"
+    >
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<style>
+  .site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 30px 0;
+    transition: background var(--transition), padding var(--transition), box-shadow var(--transition);
+  }
+
+  .site-nav__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .site-nav.is-scrolled {
+    background: rgba(20, 20, 20, 0.94);
+    padding: 16px 0;
+    box-shadow: 0 1px 0 var(--color-border-on-dark);
+    backdrop-filter: saturate(180%) blur(10px);
+  }
+
+  .site-nav__logo {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    letter-spacing: 0.02em;
+    color: var(--color-cream);
+  }
+
+  .site-nav__links {
+    display: flex;
+    gap: 44px;
+  }
+
+  .site-nav__links a {
+    font-size: 0.78rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-cream);
+    position: relative;
+    padding-bottom: 4px;
+  }
+
+  .site-nav__links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background: var(--color-accent);
+    transition: width var(--transition);
+  }
+
+  .site-nav__links a:hover::after,
+  .site-nav__links a:focus-visible::after {
+    width: 100%;
+  }
+
+  .site-nav__toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1100;
+  }
+
+  .site-nav__toggle span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: var(--color-cream);
+    transition: background var(--transition), transform var(--transition), opacity var(--transition);
+  }
+
+  .site-nav__toggle.is-open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .site-nav__toggle.is-open span:nth-child(2) {
+    opacity: 0;
+  }
+  .site-nav__toggle.is-open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  @media (max-width: 860px) {
+    .site-nav__links {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: min(320px, 80vw);
+      background: var(--color-black);
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 32px;
+      padding: 0 48px;
+      transform: translateX(100%);
+      transition: transform var(--transition);
+    }
+
+    .site-nav__links.is-open {
+      transform: translateX(0);
+    }
+
+    .site-nav__toggle {
+      display: flex;
+    }
+  }
+</style>

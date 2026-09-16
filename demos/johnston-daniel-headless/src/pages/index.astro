@@ -1,0 +1,253 @@
+---
+import Layout from "../layouts/Layout.astro";
+import StatBar from "../components/StatBar.astro";
+import ListingCard from "../components/ListingCard.astro";
+import TeamCard from "../components/TeamCard.astro";
+import Testimonial from "../components/Testimonial.astro";
+import { getListings, getTeam } from "../lib/cms";
+
+const listings = (await getListings()).slice(0, 4);
+const [large, ...small] = listings;
+const team = (await getTeam()).slice(0, 4);
+---
+
+<Layout title="Johnston & Daniel | Excellence in Living" description="Toronto's most storied addresses, represented by Johnston & Daniel.">
+  <section class="hero">
+    <div class="hero__media">
+      <img
+        src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80"
+        alt="Grand luxury home exterior at dusk with stone facade, manicured grounds, and warm light in every window"
+        loading="eager"
+      />
+    </div>
+    <div class="hero__content reveal">
+      <h1>Excellence in Living, Reimagined</h1>
+      <p class="hero__sub">
+        For over four decades, Johnston &amp; Daniel has represented Toronto's most storied addresses. This is what
+        comes next.
+      </p>
+      <a href="/listings" class="btn btn-reversed">View Current Listings</a>
+    </div>
+  </section>
+
+  <StatBar />
+
+  <section class="featured" id="about">
+    <div class="container">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Featured Listings</p>
+        <h2>Homes worth the introduction</h2>
+      </div>
+      {
+        large && (
+          <div class="featured__grid">
+            <div class="featured__large reveal">
+              <ListingCard listing={large} size="large" />
+            </div>
+            <div class="featured__stack">
+              {small.map((listing) => (
+                <div class="reveal">
+                  <ListingCard listing={listing} size="small" />
+                </div>
+              ))}
+            </div>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <Testimonial />
+
+  <section class="story">
+    <div class="story__media reveal">
+      <img
+        src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=1600&q=80"
+        alt="Aerial view of the Toronto skyline at dusk"
+        loading="lazy"
+      />
+    </div>
+    <div class="container story__content reveal">
+      <p class="eyebrow">Since 1978</p>
+      <h2>Built on relationships that outlast the sale</h2>
+      <p>
+        Johnston &amp; Daniel was founded on the belief that a home sale should feel like a conversation, not a
+        transaction. Four decades later, our advisors still walk every property in person, still return calls the
+        same day, and still treat a first time buyer with the same care as a family selling the home they raised
+        three children in.
+      </p>
+    </div>
+  </section>
+
+  <section class="team-callout">
+    <div class="container">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Our Team</p>
+        <h2>Toronto's most trusted advisors, in one room</h2>
+      </div>
+      <div class="team-callout__grid">
+        {
+          team.map((member) => (
+            <div class="reveal">
+              <TeamCard member={member} />
+            </div>
+          ))
+        }
+      </div>
+      <a href="/team" class="team-callout__link reveal">Meet the Full Team</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 640px;
+    display: flex;
+    align-items: flex-end;
+    color: var(--color-cream);
+  }
+
+  .hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+  .hero__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(20, 20, 20, 0.35) 0%, rgba(20, 20, 20, 0.15) 40%, rgba(20, 20, 20, 0.85) 100%);
+  }
+
+  .hero__content {
+    position: relative;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 40px 100px;
+    width: 100%;
+  }
+
+  .hero__content h1 {
+    font-size: clamp(2.6rem, 6.5vw, 5rem);
+    max-width: 16ch;
+    margin-bottom: 24px;
+  }
+
+  .hero__sub {
+    font-size: 1.15rem;
+    font-weight: 300;
+    max-width: 44ch;
+    margin-bottom: 36px;
+    color: rgba(250, 248, 244, 0.92);
+  }
+
+  .section-heading {
+    max-width: 640px;
+    margin-bottom: 56px;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+  }
+
+  .featured__grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 40px;
+  }
+
+  .featured__stack {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .story {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    padding: 0;
+  }
+
+  .story__media {
+    min-height: 480px;
+  }
+
+  .story__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .story__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px;
+  }
+
+  .story__content h2 {
+    font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+    margin-bottom: 22px;
+  }
+
+  .story__content p:not(.eyebrow) {
+    color: var(--color-text-muted);
+    font-size: 1.02rem;
+  }
+
+  .team-callout {
+    background: var(--color-cream);
+  }
+
+  .team-callout__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 36px;
+    margin-bottom: 48px;
+  }
+
+  .team-callout__link {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-black);
+    border-bottom: 1px solid var(--color-black);
+    padding-bottom: 4px;
+  }
+
+  @media (max-width: 1024px) {
+    .featured__grid {
+      grid-template-columns: 1fr;
+    }
+    .story {
+      grid-template-columns: 1fr;
+    }
+    .story__media {
+      min-height: 360px;
+    }
+    .team-callout__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .story__content {
+      padding: 56px 24px;
+    }
+    .team-callout__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
